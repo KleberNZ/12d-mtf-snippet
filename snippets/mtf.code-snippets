@@ -1,0 +1,181 @@
+{
+  "if block": {
+    "prefix": "ifb",
+    "body": [
+      "@ if ${1:condition}",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "Basic if block"
+  },
+
+  "if_val_eq_int": {
+    "prefix": "ifeqi",
+    "body": [
+      "@ if_val_eq_int $(${1:VAR}) ${2:VALUE}",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If integer variable equals value"
+  },
+
+  "if_val_ne_int": {
+    "prefix": "ifnei",
+    "body": [
+      "@ if_val_ne_int $(${1:VAR}) ${2:VALUE}",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If integer variable not equal to value"
+  },
+
+  "else block": {
+    "prefix": "elseb",
+    "body": [
+      "@ else",
+      "  ${0}"
+    ],
+    "description": "Else block"
+  },
+
+  "repeat block": {
+    "prefix": "rep",
+    "body": [
+      "@ repeat ${1:COUNT}",
+      "  ${0}",
+      "@ end_repeat"
+    ],
+    "description": "Repeat block"
+  },
+
+  "def_tok numeric": {
+    "prefix": "dt",
+    "body": [
+      "@ def_tok ${1:NAME} ${2:0.0}"
+    ],
+    "description": "Define numeric token"
+  },
+
+  "def_tok expression": {
+    "prefix": "dtexp",
+    "body": [
+      "@ def_tok ${1:NAME} \"(${2:expression})\""
+    ],
+    "description": "Define token using arithmetic expression"
+  },
+
+  "def_tok string": {
+    "prefix": "dtstr",
+    "body": [
+      "@ def_tok ${1:NAME} \"${2:value}\""
+    ],
+    "description": "Define string token"
+  },
+
+  "def_tok concat": {
+    "prefix": "dtc",
+    "body": [
+      "@ def_tok ${1:NAME} ${2:BASE}$(${3:TOKEN})"
+    ],
+    "description": "Define concatenated token"
+  },
+
+  "def_tok no concat": {
+    "prefix": "dtnc",
+    "body": [
+      "@ def_tok_no_concat ${1:NAME} ${2:$(SCH)} ${3:$(START)} ${4:$(ECH)} ${5:$(END)}"
+    ],
+    "description": "Define no-concat token"
+  },
+
+  "Insert basic (generic)": {
+    "prefix": "ins",
+    "body": [
+      "insert \"${1:link_name}$(_AUTO_LR)\" \"${2:link_colour}\" ${3|unknown,0.0|} ${4|unknown,0.0|} ${5|unknown,0.0|} $(_STD_CHS) ${6|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${7:comment}"
+    ],
+    "description": "Generic insert; appended after last link"
+  },
+
+  "Insert before link": {
+    "prefix": "insb",
+    "body": [
+      "insert \"${1:link_name}$(_AUTO_LR)\" \"${2:link_colour}\" ${3|unknown,0.0|} ${4|unknown,0.0|} ${5|unknown,0.0|} $(_STD_CHS) \"${6:before_link}$(_AUTO_LR)\" ${7|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${8:comment}"
+    ],
+    "description": "Insert before specified link"
+  },
+
+  "Insert after link": {
+    "prefix": "insa",
+    "body": [
+      "insert \"${1:link_name}$(_AUTO_LR)\" \"${2:link_colour}\" ${3|unknown,0.0|} ${4|unknown,0.0|} ${5|unknown,0.0|} $(_STD_CHS) \"\" \"${6:after_link}$(_AUTO_LR)\" ${7|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${8:comment}"
+    ],
+    "description": "Insert after specified link (explicit empty BEFORE)"
+  },
+
+  "Insert with interval": {
+    "prefix": "insi",
+    "body": [
+      "insert \"${1:link_name}$(_AUTO_LR)\" \"${2:link_colour}\" ${3|unknown,0.0|} ${4|unknown,0.0|} ${5|unknown,0.0|} $(_STD_CHS) interval ${6:1} ${7|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${8:comment}"
+    ],
+    "description": "Insert with explicit interval override"
+  },
+
+  "Link fixed – modify one dimension": {
+    "prefix": "lfx",
+    "body": [
+      "link_fixed \"${1:link_name}\" $(_SCH) 0 $(_ECH) 0 \"${2|mod_wdt_xfl_fix,mod_wdt_hgt_fix,mod_hgt_wdt_fix,mod_hgt_xfl_fix,mod_xfl_wdt_fix,mod_xfl_hgt_fix,mod_slp_wdt_fix,mod_slp_hgt_fix|}\" \"val_constant\" ${3:0.0} \\$null \"\" ${4|1,0|} ${5|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${6:comment}"
+    ],
+    "description": "Modify one dimension of a link using mod_*_fix"
+  },
+  "Link fixed – modify all": {
+    "prefix": "lfxall",
+    "body": [
+      "link_fixed \"${1:link_name}\" $(_SCH) 0 $(_ECH) 0 \"mod_all\" \"pos_pos_lineal\" \\$null \\$null \"\" ${2|1,0|} ${3|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${4:comment}"
+    ],
+    "description": "Modify all dimensions of a link (mod_all)"
+  },
+
+  "variable_constant_full": {
+    "prefix": "varc",
+    "body": [
+      "variable \"${1:VAR_NAME}\" $(_SCH) 0 $(_ECH) 0 \"${2:expression}\"",
+      "// ${3:comment}"
+    ],
+    "description": "Define a general variable constant over full snippet chainage"
+  },
+
+  "variable_constant_helper_function": {
+    "prefix": "varch",
+    "body": [
+      "variable \"${1:VAR_NAME}\" $(_SCH) 0 $(_ECH) 0 \"${2|link_width,link_height,link_xfall,link_grade,rel_offset,abs_offset,abs_height,abs_level,x_coord,y_coord,cl_grade_per,cl_radius,cl_chainage,cl_direction,apply_tin_height,other_tin_height,named_grade,named_grade_hdsd_fact,named_grade_sdhd_fact,named_grade_zdsd_fact,named_grade_sdzd_fact,named_grade_hdzd_fact,named_grade_zdhd_fact,captured_height|}(${3:ARG})\"",
+      "// ${4:comment}"
+    ],
+    "description": "Define constant variable using a 12d helper function"
+  },
+  
+  "decision_link_exists_full": {
+    "prefix": "dlex",
+    "body": [
+      "decision_link_exists \"${1:LINK_NAMES}\" ${2:$(_SCH)} ${3:$(_ECH)} \"${4:TEST_LINK}\" ${5|inside,outside,both|} ${6:OFFSET} ${7|$null,${8:VAR_OR_VALUE}|} \"${9:LABEL}\" ${10|true,false|}${11| $(_ASE), $(_ABS_ES), $(_ABS_EE), $(_ES), $(_ES_EE), $(_EE)|}"
+    ],
+    "description": "decision_link_exists (single-line, full parameter set)"
+  },
+
+
+  "decision_goto_full": {
+    "prefix": "dlg",
+    "body": [
+      "decision_goto \"${1:LABEL}\" ${2:$(_SCH)} ${3:$(_ECH)}${4| $(_ASE), $(_ABS_ES), $(_ABS_EE), $(_ES), $(_ES_EE), $(_EE)|}"
+    ],
+    "description": "decision_goto with chainage range and optional modifier extras"
+  },
+
+  "decision_label_full": {
+    "prefix": "dll",
+    "body": [
+      "decision_label \"${1:LABEL}\" ${2:$(_SCH)} ${3:$(_ECH)}${4| $(_ASE), $(_ABS_ES), $(_ABS_EE), $(_ES), $(_ES_EE), $(_EE)|}"
+    ],
+    "description": "decision_label with chainage range and optional modifier extras"
+  }
+
+}

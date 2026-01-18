@@ -1,0 +1,161 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "12d MTF Snippet",
+  "scopeName": "source.12dmtfsnippet",
+
+  "patterns": [
+    { "include": "#directiveLine" },
+    { "include": "#nonDirectiveLineComment" },
+    { "include": "#blockComment" },
+
+    { "include": "#defTokExpressionString" },
+    { "include": "#string" },
+
+    { "include": "#macroAlias" },
+    { "include": "#variable" },
+    { "include": "#atDirectives" },
+    { "include": "#numbers" },
+    { "include": "#logicalOperators" },
+    { "include": "#arithmeticOperatorsSpaced" },
+
+    { "include": "#kw_control" },
+    { "include": "#kw_modifiers" },
+    { "include": "#kw_geometry" },
+    { "include": "#kw_insert_remove" },
+    { "include": "#kw_link_ops" },
+    { "include": "#kw_commands" },
+    { "include": "#kw_constants" }
+  ],
+
+  "repository": {
+    "nonDirectiveLineComment": {
+      "name": "comment.line.double-slash.12dmtf",
+      "match": "//(?!\\s*(PARAMETER|DISPLAY)\\b).*$"
+    },
+
+    "blockComment": {
+      "name": "comment.block.12dmtf",
+      "begin": "/\\*",
+      "end": "\\*/"
+    },
+
+    "directiveLine": {
+      "patterns": [
+        {
+          "name": "meta.directive.12dmtf",
+          "begin": "^(\\s*)(//)(?=\\s*(PARAMETER|DISPLAY)\\b)",
+          "beginCaptures": {
+            "2": { "name": "punctuation.definition.directive.12dmtf" }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\b(PARAMETER|DISPLAY)\\b",
+              "name": "keyword.other.directive.12dmtf"
+            },
+            {
+              "match": "\\b(CHOICE2?|REAL|INTEGER|TEXT|NAME|COLOUR|TICK|NAMED_GRADE|LAYER|SELECT|OPTIONAL|INCREMENT|MODEL_CREATE|MODEL_MUST_EXIST|MODEL_MUST_NOT_EXIST|TIN_CREATE|TIN_MUST_EXIST|TIN_MUST_NOT_EXIST|OUTPUT_PARSING_STAGES)\\b",
+              "name": "storage.type.12dmtf"
+            },
+            { "include": "#string" },
+            { "include": "#macroAlias" },
+            { "include": "#variable" },
+            { "include": "#numbers" }
+          ]
+        }
+      ]
+    },
+
+    "defTokExpressionString": {
+      "name": "meta.expression.def_tok.12dmtf",
+      "begin": "@\\s+def_tok\\s+\\w+\\s+\"",
+      "end": "\"",
+      "patterns": [
+        { "include": "#stringToken" },
+        { "include": "#numbers" },
+        { "include": "#arithmeticOperatorsSpaced" }
+      ]
+    },
+
+    "stringToken": {
+      "name": "variable.other.token.12dmtf",
+      "match": "\\$\\([^\\)]+\\)"
+    },
+
+    "string": {
+      "name": "string.quoted.double.12dmtf",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        { "include": "#stringToken" }
+      ]
+    },
+
+    "macroAlias": {
+      "name": "support.constant.macro.12dmtf",
+      "match": "\\$\\(_[A-Z0-9_]+\\)"
+    },
+
+    "variable": {
+      "name": "variable.other.12dmtf",
+      "match": "\\$\\((?!_)[A-Za-z0-9_]+\\)"
+    },
+
+    "atDirectives": {
+      "name": "keyword.control.directive.12dmtf",
+      "match": "\\B@\\s+(if(_[a-z0-9_]+)?|else|end_if|def|def_tok|repeat|end_repeat|label|goto)\\b"
+    },
+
+    "numbers": {
+      "patterns": [
+        { "name": "constant.numeric.float.12dmtf", "match": "\\b\\d+\\.\\d+\\b" },
+        { "name": "constant.numeric.integer.12dmtf", "match": "\\b\\d+\\b" }
+      ]
+    },
+
+    "logicalOperators": {
+      "name": "keyword.operator.logical.12dmtf",
+      "match": "&&|\\|\\|"
+    },
+
+    "arithmeticOperatorsSpaced": {
+      "name": "keyword.operator.arithmetic.12dmtf",
+      "match": "(?<=\\s)(\\+|\\-|\\*|/)(?=\\s)"
+    },
+
+    "kw_control": {
+      "name": "keyword.control.12dmtf",
+      "match": "\\b(if|else|endif|repeat|endrepeat|goto|label|return)\\b"
+    },
+
+    "kw_modifiers": {
+      "name": "keyword.other.modifier.12dmtf",
+      "match": "\\b(absolute|relative|offset|delta|interval|link|no_link|extend|trim|copy|replace|overwrite|optional|required|increment|decrement|reverse|flip|mirror)\\b"
+    },
+
+    "kw_geometry": {
+      "name": "support.type.geometry.12dmtf",
+      "match": "\\b(point|line|arc|polyline|chain|surface|triangle|segment|node|vertex|centroid|normal|tangent|bearing|grade|slope|level|height|width|length|radius|diameter|angle|azimuth|distance)\\b"
+    },
+
+    "kw_insert_remove": {
+      "name": "keyword.other.edit.12dmtf",
+      "match": "\\b(insert|insert_cut|insert_fill|insert_absolute|remove|remove_cut|remove_fill|remove_layer|remove_abs|copy_layer)\\b"
+    },
+
+    "kw_link_ops": {
+      "name": "support.function.link.12dmtf",
+      "match": "\\b(link_width|link_height|link_grade|link_slope|link_level|link_offset|link_delta_level|link_delta_height|link_delta_offset|link_delta_grade|link_delta_slope|link_absolute|rel_offset|abs_offset|abs_height|abs_level)\\b"
+    },
+
+    "kw_commands": {
+      "name": "keyword.other.command.12dmtf",
+      "match": "\\b(alignment|apply|area|attribute|axis|base|boundary|calculate|centre|chainage|check|clip|combine|compare|connect|convert|copy|create|delete|divide|draw|edit|extend|extract|filter|find|fit|generate|group|import|intersect|join|limit|list|load|map|match|merge|modify|move|offset|output|plot|project|read|rebuild|record|reduce|refine|remove|replace|resample|reverse|rotate|save|scale|select|set|shift|slice|smooth|snap|sort|split|store|swap|tag|transform|translate|trim|update|validate|write)\\b"
+    },
+
+    "kw_constants": {
+      "name": "constant.language.12dmtf",
+      "match": "\\b(unknown|null|none|auto|default|linear|cubic|no_colour|true|false|on|off)\\b"
+    }
+  }
+}

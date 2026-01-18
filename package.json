@@ -1,0 +1,55 @@
+{
+  "name": "12d-mtf-snippet",
+  "displayName": "12d MTF Snippet Support",
+  "description": "Language support for 12d Model MTF snippet files (.mtfsnippet)",
+  "version": "0.1.0",
+  "publisher": "kleberNZ",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kleberNZ/12d-mtf-snippet"
+  },
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "12d",
+    "12d Model",
+    "MTF",
+    "mtfsnippet",
+    "civil engineering"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "12dmtfsnippet",
+        "aliases": [
+          "12d MTF Snippet",
+          "12dmtfsnippet"
+        ],
+        "extensions": [
+          ".mtfsnippet"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "12dmtfsnippet",
+        "scopeName": "source.12dmtfsnippet",
+        "path": "./syntaxes/12dmtfsnippet.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "12dmtfsnippet",
+        "path": "./snippets/mtf.code-snippets"
+      }
+    ]
+  }
+}
