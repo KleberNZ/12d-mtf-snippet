@@ -2,6 +2,13 @@
 
 All notable changes to the **12d MTF Snippet Support** extension are documented here.
 
+## [0.1.1] - 2026-01-19
+
+### Changed
+- Improved README clarity and structure
+- Added syntax highlighting and snippet IntelliSense screenshots
+
+
 ## [0.1.0] – 2026-01-18
 
 ### Added
