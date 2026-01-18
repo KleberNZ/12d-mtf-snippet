@@ -1,57 +1,107 @@
 # 12d MTF Snippet Support
 
-Language support for **12d Model MTF snippet files** (`.mtfsnippet`) in **Visual Studio Code**.
+VS Code language support for **12d Model** `*.mtfsnippet` files, providing syntax highlighting and high-value authoring snippets.
 
-This is a **pure language extension**:
-- No runtime code
-- No telemetry
-- No background processes
-- No Language Server Protocol (LSP)
+This is a **pure language extension** — no runtime code, no execution, no validation.
+
+---
+
+## Quick start
+
+1. Install the extension **12d MTF Snippet Support**
+2. Open any file with the `.mtfsnippet` extension
+3. Start typing a snippet prefix and press `Tab`, or use `Ctrl+Space` to trigger IntelliSense
 
 ---
 
 ## Features
 
-- Syntax highlighting for `.mtfsnippet` files
-- Support for:
-  - Line comments (`//`)
-  - Block comments (`/* ... */`)
-- Control-flow directives:
-  - `@ if`, `@ else`, `@ end_if`
-  - `@ repeat`, related conditional forms
-- Token and macro highlighting:
+- Syntax highlighting for `*.mtfsnippet`
+- Line comments:
+  - `//` normal comments
+  - Directive-style comments such as `// PARAMETER`, `// DISPLAY`, `// INFO`
+- Block comments:
+  - `/* ... */`
+- Highlighting for control-flow directives:
+  - `@ if`, `@ else`, `@ end_if`, `@ repeat`, `@ end_repeat`
+- Logical operators: `&&`, `||`
+- Arithmetic operators: `+ - * /`
+- Token highlighting:
   - `$()` variables
   - `$(_XXXX)` macro aliases
-- Authoring snippets for:
-  - Control-flow blocks
-  - `@ def_tok` patterns
-  - Insert and fixed modifier patterns
+- Token awareness inside strings when wrapped in `$()`
+- Authoring snippets via IntelliSense
 
 ---
 
-## File Association
+## Included snippets
 
-This extension activates automatically for:
+### Control flow
 
+| Prefix | Description |
+|------|-------------|
+| `ifb` | Basic `@ if` / `@ end_if` block |
+| `ifeqi` | `@ if_val_eq_int` block |
+| `ifnei` | `@ if_val_ne_int` block |
+| `elseb` | `@ else` block |
+| `rep` | `@ repeat` / `@ end_repeat` block |
+
+---
+
+### `@ def_tok`
+
+| Prefix | Description |
+|------|-------------|
+| `dt` | Numeric token |
+| `dtexp` | Expression token |
+| `dtstr` | String token |
+| `dtc` | Concatenation token |
+| `dtnc` | `@ def_tok_no_concat` |
+
+---
+
+### Insert & fixed patterns
+
+| Prefix | Description |
+|------|-------------|
+| `ins` | Basic insert |
+| `insb` | Insert before link |
+| `insa` | Insert after link |
+| `insi` | Insert with interval override |
+| `lfx` | Single-dimension fixed modifier |
+| `lfxall` | `mod_all` fixed modifier |
+
+All snippets are **generic** and make no domain assumptions.
+
+---
+
+## Examples
+
+### Control flow
+
+@ if ${condition}
+  // statements
+@ end_if
+
+### Token definition
+@ def_tok "${NAME}" "${VALUE}"
+
+### Insert / fixed pattern
+insert "Design=>$(LN)" "red" ${width} ${height} ${xfall} $(_SCH) 0 $(_ECH) 0 $(_ASE) // comment
+
+### Screenshots
+Syntax highlighting and IntelliSense examples
+
+### File association
+This extension activates on:
 *.mtfsnippet
 
----
+### Scope and limitations
+This extension does not provide:
+- Validation or linting
+- Formatting
+- Semantic analysis
+- Execution or runtime features
+- Language Server Protocol (LSP)
 
-## Scope and Design
-
-- **Language ID:** `12dmtfsnippet`
-- **Grammar scope:** `source.12dmtfsnippet`
-- Grammar- and snippet-only extension
-- No validation, execution, or semantic analysis
-
----
-
-## Intended Audience
-
-Civil engineers and 12d Model users who author or maintain **MTF snippet libraries** and want reliable syntax highlighting and structured snippet authoring in VS Code.
-
----
-
-## License
-
-MIT
+It is intentionally limited to syntax awareness and authoring assistance.
