@@ -89,8 +89,14 @@ All snippets are **generic** and make no domain assumptions.
 ### Insert / fixed pattern
 insert "Design=>$(LN)" "red" ${width} ${height} ${xfall} $(_SCH) 0 $(_ECH) 0 $(_ASE) // comment
 
-### Screenshots
-Syntax highlighting and IntelliSense examples
+## Screenshots
+
+### Syntax highlighting
+![Syntax highlighting](images/syntax-highlighting.png)
+
+### Snippet IntelliSense
+![Snippet IntelliSense](images/snippet-intellisense.png)
+
 
 ### File association
 This extension activates on:
