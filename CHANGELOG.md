@@ -2,6 +2,12 @@
 
 All notable changes to the **12d MTF Snippet Support** extension are documented here.
 
+## [0.1.3] - 2026-01-21
+
+### Changed
+- Updated Marketplace Overview and README for clarity and completeness
+- Documented full snippet coverage based on 12d Model Manual Section 19.7
+
 ## [0.1.2] - 2026-01-21
 
 ### Added
