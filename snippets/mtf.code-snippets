@@ -1,93 +1,93 @@
 {
+  "12d HEADER block": {
+    "prefix": "hdr",
+    "body": [
+      "// ================================================================",
+      "// ${1:Library / Company Name} Snippet",
+      "// ================================================================",
+      "//",
+      "// Snippet: ${2:Snippet Name}",
+      "// Created: ${3:Month Year}",
+      "// Updated: ${4:Description of update}",
+      "//",
+      "// /////////////////////////////////////////////////////////////////",
+      "//",
+      "// INFO Snippet Type: ${5|INSERT,MODIFY,PAVEMENT,TRIMESH|}",
+      "// INFO Description: ${6:Short description}",
+      "//",
+      "// INFO ${7:Additional info line 1}",
+      "// INFO ${8:Additional info line 2}",
+      "// INFO ${9:Additional info line 3}",
+      "//",
+      "// /////////////////////////////////////////////////////////////////",
+      "${0}"
+    ],
+    "description": "12d library-style heading and INFO block"
+  },
   "if block": {
     "prefix": "ifb",
     "body": [
       "@ if ${1:condition}",
-      "  ${0}",
+      "// Commands processed if statement is true",
       "@ end_if"
     ],
     "description": "Basic if block"
   },
-
-  "if_val_eq_int": {
-    "prefix": "ifeqi",
+  "if / else block": {
+    "prefix": "ifelse",
     "body": [
-      "@ if_val_eq_int $(${1:VAR}) ${2:VALUE}",
-      "  ${0}",
-      "@ end_if"
+      "@ if ${1:condition}",
+      "  ${2}",
+      "@ else",
+      "  ${3}",
+      "@ end_if",
+      "${0}"
     ],
-    "description": "If integer variable equals value"
+    "description": "If / else block"
   },
-
-  "if_val_ne_int": {
-    "prefix": "ifnei",
+  "Abbreviations reference (19.7.13.4)": {
+    "prefix": "abb",
     "body": [
-      "@ if_val_ne_int $(${1:VAR}) ${2:VALUE}",
-      "  ${0}",
-      "@ end_if"
+      "// INFO Abbreviations used in snippet directives (12d Model 19.7.13.4)",
+      "// if        - conditional test",
+      "// def       - define a token",
+      "// tok       - token",
+      "// val       - value",
+      "// str       - string (text)",
+      "// int       - integer",
+      "// dbl       - double",
+      "// tol       - tolerance",
+      "// eq        - equal",
+      "// ne        - not equal",
+      "// gt        - greater than",
+      "// lt        - less than",
+      "// ge        - greater than or equal to",
+      "// le        - less than or equal to",
+      "// in_range  - within a range of values (lower to upper)",
+      "// nin_range - not within a range of values",
+      "//",
+      "// Example:",
+      "// @ if_val_le_dbl_tol"
     ],
-    "description": "If integer variable not equal to value"
+    "description": "Reference: directive abbreviations used in 12d snippets"
   },
-
   "else block": {
     "prefix": "elseb",
     "body": [
       "@ else",
-      "  ${0}"
+      "// Commands processed if statement is true"
     ],
     "description": "Else block"
   },
-
   "repeat block": {
     "prefix": "rep",
     "body": [
       "@ repeat ${1:COUNT}",
-      "  ${0}",
+      "// modifier to copy",
       "@ end_repeat"
     ],
     "description": "Repeat block"
   },
-
-  "def_tok numeric": {
-    "prefix": "dt",
-    "body": [
-      "@ def_tok ${1:NAME} ${2:0.0}"
-    ],
-    "description": "Define numeric token"
-  },
-
-  "def_tok expression": {
-    "prefix": "dtexp",
-    "body": [
-      "@ def_tok ${1:NAME} \"(${2:expression})\""
-    ],
-    "description": "Define token using arithmetic expression"
-  },
-
-  "def_tok string": {
-    "prefix": "dtstr",
-    "body": [
-      "@ def_tok ${1:NAME} \"${2:value}\""
-    ],
-    "description": "Define string token"
-  },
-
-  "def_tok concat": {
-    "prefix": "dtc",
-    "body": [
-      "@ def_tok ${1:NAME} ${2:BASE}$(${3:TOKEN})"
-    ],
-    "description": "Define concatenated token"
-  },
-
-  "def_tok no concat": {
-    "prefix": "dtnc",
-    "body": [
-      "@ def_tok_no_concat ${1:NAME} ${2:$(SCH)} ${3:$(START)} ${4:$(ECH)} ${5:$(END)}"
-    ],
-    "description": "Define no-concat token"
-  },
-
   "Insert basic (generic)": {
     "prefix": "ins",
     "body": [
@@ -95,7 +95,6 @@
     ],
     "description": "Generic insert; appended after last link"
   },
-
   "Insert before link": {
     "prefix": "insb",
     "body": [
@@ -103,7 +102,6 @@
     ],
     "description": "Insert before specified link"
   },
-
   "Insert after link": {
     "prefix": "insa",
     "body": [
@@ -111,7 +109,6 @@
     ],
     "description": "Insert after specified link (explicit empty BEFORE)"
   },
-
   "Insert with interval": {
     "prefix": "insi",
     "body": [
@@ -119,7 +116,6 @@
     ],
     "description": "Insert with explicit interval override"
   },
-
   "Link fixed – modify one dimension": {
     "prefix": "lfx",
     "body": [
@@ -134,7 +130,6 @@
     ],
     "description": "Modify all dimensions of a link (mod_all)"
   },
-
   "variable_constant_full": {
     "prefix": "varc",
     "body": [
@@ -143,7 +138,6 @@
     ],
     "description": "Define a general variable constant over full snippet chainage"
   },
-
   "variable_constant_helper_function": {
     "prefix": "varch",
     "body": [
@@ -152,7 +146,6 @@
     ],
     "description": "Define constant variable using a 12d helper function"
   },
-  
   "decision_link_exists_full": {
     "prefix": "dlex",
     "body": [
@@ -160,8 +153,6 @@
     ],
     "description": "decision_link_exists (single-line, full parameter set)"
   },
-
-
   "decision_goto_full": {
     "prefix": "dlg",
     "body": [
@@ -169,13 +160,1544 @@
     ],
     "description": "decision_goto with chainage range and optional modifier extras"
   },
-
   "decision_label_full": {
     "prefix": "dll",
     "body": [
-      "decision_label \"${1:LABEL}\" ${2:$(_SCH)} ${3:$(_ECH)}${4| $(_ASE), $(_ABS_ES), $(_ABS_EE), $(_ES), $(_ES_EE), $(_EE)|}"
+      "decision_label \"${1:LABEL}\" ${2:$(_SCH)} ${3:$(_ECH)} ${4:extras}"
     ],
     "description": "decision_label with chainage range and optional modifier extras"
+  },
+  "12d START PARAMETER REGION": {
+    "prefix": "preg",
+    "body": [
+      "// START_PARAMETER_REGION \"${1:Region Name}\" ${2|OPEN,CLOSED|}",
+      "${0}",
+      "// END_PARAMETER_REGION \"${1:Region Name}\""
+    ],
+    "description": "12d Snippet Parameter Region (collapsible group)"
+  },
+  "12d PARAMETER (generic)": {
+    "prefix": "pp",
+    "body": [
+      "// PARAMETER ${1:param_name} ${2|REAL,ANGLE,BEARING,INTEGER,TEXT,SELECT,TICK,COLOUR,NAME,NAME_WC,LAYER,NAMED_GRADE|} \"${3:description}\" ${4:default_value}"
+    ],
+    "description": "12d PARAMETER definition (most types)"
+  },
+  "12d PARAMETER CHOICE": {
+    "prefix": "pchoice",
+    "body": [
+      "// PARAMETER ${1:param_name} CHOICE ${2:description} \"${3:Choice1}\" \"${4:Choice2}\" \"${5:Choice3}\" \"${6:Choice4}\""
+    ],
+    "description": "12d PARAMETER of type CHOICE (single selection)"
+  },
+  "12d PARAMETER CHOICE2": {
+    "prefix": "pchoice2",
+    "body": [
+      "// PARAMETER ${1:param_name} CHOICE2 ${2:description} ${3:default} \"${4:opt1}\" \"${5:descr1}\" \"${6:opt2}\" \"${7:descr2}\" \"${8:USER}\" \"${9:User defined}\""
+    ],
+    "description": "12d PARAMETER of type CHOICE2 (extended / multi-choice)"
+  },
+  "12d INFO command": {
+    "prefix": "info",
+    "body": [
+      "// INFO ${1:information text}"
+    ],
+    "description": "12d INFO command"
+  },
+  "12d INFO_SIZING command": {
+    "prefix": "infosz",
+    "body": [
+      "// INFO_SIZING ${1:width_chars} ${2:depth_chars}"
+    ],
+    "description": "12d INFO_SIZING command"
+  },
+  "12d DISPLAY": {
+    "prefix": "disp",
+    "body": [
+      "// DISPLAY ${1:param_name}"
+    ],
+    "description": "12d DISPLAY command"
+  },
+  "12d DISPLAY + DISPLAY_TYPE": {
+    "prefix": "dispt",
+    "body": [
+      "// DISPLAY ${1:param_name}",
+      "// DISPLAY_TYPE ${1:param_name}"
+    ],
+    "description": "12d DISPLAY with DISPLAY_TYPE (show current value in Type column)"
+  },
+  "12d INCREMENT command": {
+    "prefix": "inc",
+    "body": [
+      "// INCREMENT ${1:param_name} ${2:step}"
+    ],
+    "description": "12d INCREMENT parameter command"
+  },
+  "12d END_DATE command": {
+    "prefix": "enddate",
+    "body": [
+      "// END_DATE \"${1:YYYY/MM/DD HH:MM}\" \"${2:User message}\""
+    ],
+    "description": "12d END_DATE command"
+  },
+  "12d OUTPUT_PARSING_STAGES": {
+    "prefix": "ops",
+    "body": [
+      "// OUTPUT_PARSING_STAGES \"${1:filename}\""
+    ],
+    "description": "12d OUTPUT_PARSING_STAGES command (write intermediate parsing results to file)"
+  },
+  "12d NO_REPEAT_DIRECTIVES command": {
+    "prefix": "nrd",
+    "body": [
+      "// NO_REPEAT_DIRECTIVES"
+    ],
+    "description": "12d NO_REPEAT_DIRECTIVES command"
+  },
+  "12d PARAMETER OPTIONAL": {
+    "prefix": "opt",
+    "body": [
+      "OPTIONAL"
+    ],
+    "description": "12d PARAMETER definition (most types) with OPTIONAL flag"
+  },
+  "12d PARAMETER MODEL (CREATE / MUST_EXIST / MUST_NOT_EXIST)": {
+    "prefix": "pmodel",
+    "body": [
+      "// PARAMETER ${1:param_name} ${2|MODEL_CREATE,MODEL_MUST_EXIST,MODEL_MUST_NOT_EXIST|} \"${3:description}\" ${4:default_model_name}"
+    ],
+    "description": "12d PARAMETER for model handling (create or existence constraints)"
+  },
+  "12d PARAMETER TIN (CREATE / MUST_EXIST / MUST_NOT_EXIST)": {
+    "prefix": "ptin",
+    "body": [
+      "// PARAMETER ${1:param_name} ${2|TIN_CREATE,TIN_MUST_EXIST,TIN_MUST_NOT_EXIST|} \"${3:description}\" ${4:default_tin_name}"
+    ],
+    "description": "12d PARAMETER for TIN handling (create or existence constraints)"
+  },
+  "12d AUTO PARAM _AUTO_LR": {
+    "prefix": "alr",
+    "body": [
+      "$(_AUTO_LR)"
+    ],
+    "description": "Automatic parameter: inserts L on left side, R on right side"
+  },
+  "12d AUTO PARAM _SCH": {
+    "prefix": "sch",
+    "body": [
+      "$(_SCH)"
+    ],
+    "description": "Automatic parameter: start chainage mode (named_position MODIFIER_START)"
+  },
+  "12d AUTO PARAM _ECH": {
+    "prefix": "ech",
+    "body": [
+      "$(_ECH)"
+    ],
+    "description": "Automatic parameter: end chainage mode (named_position MODIFIER_END)"
+  },
+  "12d AUTO PARAM _STD_CHS": {
+    "prefix": "stdchs",
+    "body": [
+      "$(_STD_CHS)"
+    ],
+    "description": "Automatic parameter: standard chainage set (start/end modes + extensions)"
+  },
+  "12d AUTO chainage tail (_SCH/_ECH)": {
+    "prefix": "cht",
+    "body": [
+      "$(_SCH) 0 $(_ECH) 0"
+    ],
+    "description": "Common chainage tail using automatic parameters"
+  },
+  "12d AUTO PARAM _ES_EE": {
+    "prefix": "esee",
+    "body": [
+      "$(_ES_EE)"
+    ],
+    "description": "Automatic parameter: extra_start extra_end"
+  },
+  "12d AUTO PARAM _ABS_ES_EE": {
+    "prefix": "absee",
+    "body": [
+      "$(_ABS_ES_EE)"
+    ],
+    "description": "Automatic parameter: absolute extra_start extra_end"
+  },
+  "12d AUTO PARAM _ASE": {
+    "prefix": "ase",
+    "body": [
+      "$(_ASE)"
+    ],
+    "description": "Automatic parameter: absolute start and end"
+  },
+  "12d AUTO PARAM _ES": {
+    "prefix": "es",
+    "body": [
+      "$(_ES)"
+    ],
+    "description": "Automatic parameter: extra_start"
+  },
+  "12d AUTO PARAM _EE": {
+    "prefix": "ee",
+    "body": [
+      "$(_EE)"
+    ],
+    "description": "Automatic parameter: extra_end"
+  },
+  "12d AUTO absolute extras tail": {
+    "prefix": "aet",
+    "body": [
+      "$(_ABS_ES_EE)"
+    ],
+    "description": "Absolute extra_start extra_end"
+  },
+  "12d AUTO PARAM _CL_REF": {
+    "prefix": "clref",
+    "body": [
+      "$(_CL_REF)"
+    ],
+    "description": "Automatic parameter: current centreline reference"
+  },
+  "AUTO _CL_REF1": {
+    "prefix": "aclref1",
+    "body": [
+      "$(_CL_REF1)"
+    ],
+    "description": "Automatic parameter: last 1 character of reference string name"
+  },
+  "AUTO _CL_REF2": {
+    "prefix": "aclref2",
+    "body": [
+      "$(_CL_REF2)"
+    ],
+    "description": "Automatic parameter: last 2 characters of reference string name"
+  },
+  "AUTO _CL_REF3": {
+    "prefix": "aclref3",
+    "body": [
+      "$(_CL_REF3)"
+    ],
+    "description": "Automatic parameter: last 3 characters of reference string name"
+  },
+  "AUTO _CL_REF4": {
+    "prefix": "aclref4",
+    "body": [
+      "$(_CL_REF4)"
+    ],
+    "description": "Automatic parameter: last 4 characters of reference string name"
+  },
+  "AUTO _CL_REF1_MAX": {
+    "prefix": "aclref1m",
+    "body": [
+      "$(_CL_REF1_MAX)"
+    ],
+    "description": "Automatic parameter: last 1 character of reference string name (error if too short)"
+  },
+  "AUTO _CL_REF2_MAX": {
+    "prefix": "aclref2m",
+    "body": [
+      "$(_CL_REF2_MAX)"
+    ],
+    "description": "Automatic parameter: last 2 characters of reference string name (error if too short)"
+  },
+  "AUTO _CL_REF3_MAX": {
+    "prefix": "aclref3m",
+    "body": [
+      "$(_CL_REF3_MAX)"
+    ],
+    "description": "Automatic parameter: last 3 characters of reference string name (error if too short)"
+  },
+  "AUTO _CL_REF4_MAX": {
+    "prefix": "aclref4m",
+    "body": [
+      "$(_CL_REF4_MAX)"
+    ],
+    "description": "Automatic parameter: last 4 characters of reference string name (error if too short)"
+  },
+  "AUTO _CL_REF_MODEL": {
+    "prefix": "aclrefmdl",
+    "body": [
+      "$(_CL_REF_MODEL)"
+    ],
+    "description": "Automatic parameter: model name of reference string"
+  },
+  "AUTO $null": {
+    "prefix": "anull",
+    "body": [
+      "$null"
+    ],
+    "description": "Automatic parameter: literal $null for MTF syntax"
+  },
+  "AUTO _INS_05": {
+    "prefix": "ains05",
+    "body": [
+      "$(_INS_05)"
+    ],
+    "description": "Automatic parameter: insertion side (0–4 left / 5–9 right)"
+  },
+  "AUTO _INS_LR": {
+    "prefix": "ainslr",
+    "body": [
+      "$(_INS_LR)"
+    ],
+    "description": "Automatic parameter: insertion side (L / R)"
+  },
+  "AUTO _INS_0I": {
+    "prefix": "ains0i",
+    "body": [
+      "$(_INS_0I)"
+    ],
+    "description": "Automatic parameter: insertion side (0–9,A–H left / I–Z right)"
+  },
+  "AUTO _INS_SIDE_05": {
+    "prefix": "ainss05",
+    "body": [
+      "$(_INS_SIDE_05)"
+    ],
+    "description": "Automatic parameter: set insertion side without parameter definition"
+  },
+  "AUTO _SIDE_FX": {
+    "prefix": "asidefx",
+    "body": [
+      "$(_SIDE_FX)"
+    ],
+    "description": "Automatic parameter: forced insertion side derived from INS parameters"
+  },
+  "AUTO _AUTO_LAYER_LR": {
+    "prefix": "alayerlr",
+    "body": [
+      "$(_AUTO_LAYER_LR)"
+    ],
+    "description": "Automatic parameter: layer_left or layer_right based on side"
+  },
+  "AUTO _APPLY_TIN": {
+    "prefix": "aapplytin",
+    "body": [
+      "$(_APPLY_TIN)"
+    ],
+    "description": "Automatic parameter: tin name from Apply MTF"
+  },
+  "AUTO _APPLY_TIN_OPTIONAL": {
+    "prefix": "aapplytino",
+    "body": [
+      "$(_APPLY_TIN_OPTIONAL)"
+    ],
+    "description": "Automatic parameter: optional tin name from Apply MTF"
+  },
+  "AUTO _APPLY_FUNC_NAME": {
+    "prefix": "aapplyfn",
+    "body": [
+      "$(_APPLY_FUNC_NAME)"
+    ],
+    "description": "Automatic parameter: Apply MTF function name"
+  },
+  "AUTO _MODIFY_EXTRAS": {
+    "prefix": "amodx",
+    "body": [
+      "$(_MODIFY_EXTRAS)"
+    ],
+    "description": "Automatic parameter: inserts 'absolute extra_start extra_end'"
+  },
+  "AUTO _SNIPPET_NAME": {
+    "prefix": "asnippet",
+    "body": [
+      "$(_SNIPPET_NAME)"
+    ],
+    "description": "Automatic parameter: name of the snippet file (without extension)"
+  },
+  "AUTO _DESIGN_LAYER_NAME": {
+    "prefix": "adeslayer",
+    "body": [
+      "$(_DESIGN_LAYER_NAME)"
+    ],
+    "description": "Automatic parameter: design layer name from Apply MTF"
+  },
+  "AUTO _APPLY_DESIGN_MODEL": {
+    "prefix": "aapplymodel",
+    "body": [
+      "$(_APPLY_DESIGN_MODEL)"
+    ],
+    "description": "Automatic parameter: design model name from Apply MTF"
+  },
+  "AUTO _HINGE": {
+    "prefix": "ahinge",
+    "body": [
+      "$(_HINGE)"
+    ],
+    "description": "Automatic parameter: hinge string name"
+  },
+  "AUTO _HINGE_REF": {
+    "prefix": "ahingeref",
+    "body": [
+      "$(_HINGE_REF)"
+    ],
+    "description": "Automatic parameter: full hinge reference string name"
+  },
+  "AUTO _HINGE_REF1_MAX": {
+    "prefix": "ahingeref1m",
+    "body": [
+      "$(_HINGE_REF1_MAX)"
+    ],
+    "description": "Automatic parameter: last 1 character of hinge reference name (error if too short)"
+  },
+  "AUTO _HINGE_REF2_MAX": {
+    "prefix": "ahingeref2m",
+    "body": [
+      "$(_HINGE_REF2_MAX)"
+    ],
+    "description": "Automatic parameter: last 2 characters of hinge reference name (error if too short)"
+  },
+  "AUTO _HINGE_REF3_MAX": {
+    "prefix": "ahingeref3m",
+    "body": [
+      "$(_HINGE_REF3_MAX)"
+    ],
+    "description": "Automatic parameter: last 3 characters of hinge reference name (error if too short)"
+  },
+  "AUTO _HINGE_REF4_MAX": {
+    "prefix": "ahingeref4m",
+    "body": [
+      "$(_HINGE_REF4_MAX)"
+    ],
+    "description": "Automatic parameter: last 4 characters of hinge reference name (error if too short)"
+  },
+  "AUTO _SIDE": {
+    "prefix": "aside",
+    "body": [
+      "$(_SIDE)"
+    ],
+    "description": "Automatic parameter: side indicator (-1 left / +1 right)"
+  },
+  "AUTO _ROW": {
+    "prefix": "arow",
+    "body": [
+      "$(_ROW)"
+    ],
+    "description": "Automatic parameter: row position of snippet in MTF"
+  },
+  "AUTO _SILENT_NG": {
+    "prefix": "asilentng",
+    "body": [
+      "$(_SILENT_NG)"
+    ],
+    "description": "Automatic parameter: suppress named grade from GUI lists"
+  },
+  "AUTO _PROJECT_ATTRIBUTE": {
+    "prefix": "aprojattr",
+    "body": [
+      "$(_PROJECT_ATTRIBUTE[${1:ProjectDetails/ProjectNumber/Value}])"
+    ],
+    "description": "Automatic parameter: project attribute value"
+  },
+  "AUTO _PROJECT_ATTRIBUTE (parameterized)": {
+    "prefix": "aprojattrp",
+    "body": [
+      "$(_PROJECT_ATTRIBUTE[${1:$(PATH)}/${2:Attribute}[${3:$(INSTANCE)}]])"
+    ],
+    "description": "Automatic parameter: project attribute with parameterized path or instance"
+  },
+  "AUTO _MODEL_ATTRIBUTE": {
+    "prefix": "amodelattr",
+    "body": [
+      "$(_MODEL_ATTRIBUTE[${1:model_name},${2:attribute_path}])"
+    ],
+    "description": "Automatic parameter: model attribute value. Format: [model,attribute] (no quotes)."
+  },
+  "AUTO _MODEL_ATTRIBUTE (instance)": {
+    "prefix": "amodelattri",
+    "body": [
+      "$(_MODEL_ATTRIBUTE[${1:$(SOURCE_MODEL)},${2:attribute_path}[${3:$(VAL_INST)}]])"
+    ],
+    "description": "Automatic parameter: model attribute with instance selector [n] or [$(VAL_INST)]."
+  },
+  "SUBSTRING parameter/token": {
+    "prefix": "substr",
+    "body": [
+      "$(${1:PARAM}[${2:start}:${3:end}])"
+    ],
+    "description": "Substring of parameter or token. Syntax: $(PARAM[start:end]). start>=1, end>=start."
+  },
+  "AUTO _VERSION_*": {
+    "prefix": "aversion",
+    "body": [
+      "$(_${1|VERSION_NAME,VERSION_MAJOR,VERSION_MINOR,VERSION_MINOR_CHAR,VERSION_DATA_BASE,VERSION_BUILD|})"
+    ],
+    "description": "Automatic parameter: 12d version information (_VERSION_*)"
+  },
+  "AUTO _SILENT_LAYER": {
+    "prefix": "asilentlayer",
+    "body": [
+      "$(_SILENT_LAYER)"
+    ],
+    "description": "Automatic parameter: suppress layer from GUI layer lists"
+  },
+  "AUTO _USER": {
+    "prefix": "auser",
+    "body": [
+      "$(_USER)"
+    ],
+    "description": "Automatic parameter: current user name"
+  },
+  "AUTO _USER_LIB": {
+    "prefix": "auserlib",
+    "body": [
+      "$(_USER_LIB)"
+    ],
+    "description": "Automatic parameter: current user library path"
+  },
+  "AUTO _CUSTOMER_USER": {
+    "prefix": "acustuser",
+    "body": [
+      "$(_CUSTOMER_USER)"
+    ],
+    "description": "Automatic parameter: customer user name"
+  },
+  "AUTO _CUSTOMER_LIB": {
+    "prefix": "acustlib",
+    "body": [
+      "$(_CUSTOMER_LIB)"
+    ],
+    "description": "Automatic parameter: customer library path"
+  },
+  "AUTO _LIB": {
+    "prefix": "alib",
+    "body": [
+      "$(_LIB)"
+    ],
+    "description": "Automatic parameter: active 12d library path"
+  },
+  "AUTO _SETUPS": {
+    "prefix": "asetups",
+    "body": [
+      "$(_SETUPS)"
+    ],
+    "description": "Automatic parameter: setups directory"
+  },
+  "AUTO _SET_UPS": {
+    "prefix": "asetups2",
+    "body": [
+      "$(_SET_UPS)"
+    ],
+    "description": "Automatic parameter: setups directory (alternate spelling)"
+  },
+  "AUTO _MODEL_ATTRIBUTE (parameterized)": {
+    "prefix": "amodelattrp",
+    "body": [
+      "$(_MODEL_ATTRIBUTE[${1:$(SOURCE_MODEL)},${2:$(ATTRIBUTE_PATH)}])"
+    ],
+    "description": "Automatic parameter: model attribute using parameters/tokens. Ensure params are defined as tokens first (manual 19.7.10.50)."
+  },
+  "def_tok (no value)": {
+    "prefix": "dt",
+    "body": [
+      "@ def_tok ${1:TOK}"
+    ],
+    "description": "Define token with no value (19.7.13.6.1)"
+  },
+  "def_tok (value)": {
+    "prefix": "dtv",
+    "body": [
+      "@ def_tok ${1:TOK} ${2:value}"
+    ],
+    "description": "Define token with a value (unquoted if no spaces) (19.7.13.6.1)"
+  },
+  "def_tok (quoted string)": {
+    "prefix": "dtq",
+    "body": [
+      "@ def_tok ${1:TOK} \"${2:text}\""
+    ],
+    "description": "Define token with a quoted string value (19.7.13.6.1)"
+  },
+  "def_tok (concat parts)": {
+    "prefix": "dtc",
+    "body": [
+      "@ def_tok ${1:TOK} ${2:PART1} ${3:PART2}"
+    ],
+    "description": "Define token by concatenating multiple parts (result has no whitespace) (19.7.13.6.1)"
+  },
+  "def_tok (concat with token reference)": {
+    "prefix": "dtct",
+    "body": [
+      "@ def_tok ${1:TOK} ${2:PART1} $(${3:OTHER_TOK})"
+    ],
+    "description": "Define token by concatenating text + another token's value (19.7.13.6.1)"
+  },
+  "if_tok block": {
+    "prefix": "iftok",
+    "body": [
+      "@ if_tok ${1:TOK1}${2: TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If any tokens are defined (19.7.13.6.2)"
+  },
+  "if_ntok block": {
+    "prefix": "ifntok",
+    "body": [
+      "@ if_ntok ${1:TOK1}${2: TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If tokens are undefined (true only if none are defined) (19.7.13.6.3)"
+  },
+  "if_tok_ntok block": {
+    "prefix": "iftokntok",
+    "body": [
+      "@ if_tok_ntok ${1:DEF_TOK1}${2: DEF_TOK2} ; ${3:UNDEF_TOK1}${4: UNDEF_TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If any token in first set is defined AND any token in second set is undefined (19.7.13.6.4)"
+  },
+  "if_two_toks (AND) block": {
+    "prefix": "if2tokand",
+    "body": [
+      "@ if_two_toks ${1:TOK1} && ${2:TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token-defined test combined with AND (19.7.13.6.5)"
+  },
+  "if_two_toks (OR) block": {
+    "prefix": "if2tokor",
+    "body": [
+      "@ if_two_toks ${1:TOK1} || ${2:TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token-defined test combined with OR (19.7.13.6.5)"
+  },
+  "if_two_toks_eq (AND) block": {
+    "prefix": "if2tokeqand",
+    "body": [
+      "@ if_two_toks_eq ${1:TOK1} ${2:VAL1} && ${3:TOK2} ${4:VAL2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "Compare TOK1==VAL1 AND TOK2==VAL2 (19.7.13.6.6)"
+  },
+  "if_two_toks_eq (OR) block": {
+    "prefix": "if2tokeqor",
+    "body": [
+      "@ if_two_toks_eq ${1:TOK1} ${2:VAL1} || ${3:TOK2} ${4:VAL2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "Compare TOK1==VAL1 OR TOK2==VAL2 (19.7.13.6.6)"
+  },
+  "if_all_toks block": {
+    "prefix": "ifalltoks",
+    "body": [
+      "@ if_all_toks ${1:TOK1}${2: TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If all tokens are defined (19.7.13.6.7)"
+  },
+  "if_nall_toks block": {
+    "prefix": "ifnalltoks",
+    "body": [
+      "@ if_nall_toks ${1:TOK1}${2: TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If all tokens are undefined (19.7.13.6.8)"
+  },
+  "if_alltok_ntok block": {
+    "prefix": "ifalltokntok",
+    "body": [
+      "@ if_alltok_ntok ${1:DEF_TOK1}${2: DEF_TOK2} ; ${3:UNDEF_TOK1}${4: UNDEF_TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If all tokens in first set are defined AND none in second set are defined (19.7.13.6.9)"
+  },
+  "if_tok_nalltok block": {
+    "prefix": "iftoknalltok",
+    "body": [
+      "@ if_tok_nalltok ${1:DEF_ANY_TOK1}${2: DEF_ANY_TOK2} ; ${3:UNDEF_ALL_TOK1}${4: UNDEF_ALL_TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If any token in first set is defined AND all tokens in second set are undefined (19.7.13.6.10)"
+  },
+  "if_alltok_nalltok block": {
+    "prefix": "ifalltoknalltok",
+    "body": [
+      "@ if_alltok_nalltok ${1:DEF_ALL_TOK1}${2: DEF_ALL_TOK2} ; ${3:UNDEF_ALL_TOK1}${4: UNDEF_ALL_TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If all tokens in first set are defined AND all tokens in second set are undefined (19.7.13.6.11)"
+  },
+  "if_tok_eq_tok block": {
+    "prefix": "iftokeq",
+    "body": [
+      "@ if_tok_eq_tok ${1:TOK1} ${2:TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token values are equal (text compare) (19.7.13.6.12)"
+  },
+  "if_tok_neq_tok block": {
+    "prefix": "iftokneq",
+    "body": [
+      "@ if_tok_neq_tok ${1:TOK1} ${2:TOK2}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token values are not equal (text compare) (19.7.13.6.13)"
+  },
+  "def_tok_minus": {
+    "prefix": "dtm",
+    "body": [
+      "@ def_tok_minus ${1:TOK} ${2:VALUE1} ${3:VALUE2}"
+    ],
+    "description": "Define token as VALUE1 minus VALUE2 (single digit or character) (19.7.13.6.14)"
+  },
+  "def_tok_minus_inc": {
+    "prefix": "dtmi",
+    "body": [
+      "@ def_tok_minus_inc ${1:TOK} ${2:VALUE1} ${3:VALUE2}"
+    ],
+    "description": "Define token as (VALUE1 minus VALUE2) plus one (inclusive subtraction) (19.7.13.6.15)"
+  },
+  "def_tok_no_concat": {
+    "prefix": "dtnc",
+    "body": [
+      "@ def_tok_no_concat ${1:TOK} ${2:VALUE1} ${3:VALUE2}"
+    ],
+    "description": "Define token without concatenating values (values remain separate) (19.7.13.6.16)"
+  },
+  "def_repeat_tok": {
+    "prefix": "dtr",
+    "body": [
+      "@ def_repeat_tok ${1:TOK} ${2:REPEATS} ${3:PARAM} ${4:START_VALUE} ${5:INCREMENT_BY} ${6:INCREMENT_AFTER} ${7|dynamic,static|} ${8:REPEAT_STRING}"
+    ],
+    "description": "Define a repeating token expanded multiple times (19.7.13.6.18)"
+  },
+  "def_tok_project_attribute": {
+    "prefix": "dtpa",
+    "body": [
+      "@ def_tok_project_attribute ${1:TOK} \"${2:PROJECT_ATTRIBUTE_PATH}\""
+    ],
+    "description": "Define token from a project attribute value (19.7.13.6.19)"
+  },
+  "inc_tok": {
+    "prefix": "inctok",
+    "body": [
+      "@ inc_tok ${1:TOK} ${2:INCREMENTS} ${3|dynamic,static|}"
+    ],
+    "description": "Increment a token value (19.7.13.6.20)"
+  },
+  "dec_tok": {
+    "prefix": "dectok",
+    "body": [
+      "@ dec_tok ${1:TOK} ${2:DECREMENTS} ${3|dynamic,static|}"
+    ],
+    "description": "Decrement a token value (19.7.13.6.21)"
+  },
+  "tok_plus_dbl": {
+    "prefix": "tplus",
+    "body": [
+      "@ tok_plus_dbl ${1:TOK} ${2:DOUBLE}"
+    ],
+    "description": "Add a double value to a token (19.7.13.7.1)"
+  },
+  "tok_minus_dbl": {
+    "prefix": "tminus",
+    "body": [
+      "@ tok_minus_dbl ${1:TOK} ${2:DOUBLE}"
+    ],
+    "description": "Subtract a double value from a token (19.7.13.7.2)"
+  },
+  "tok_times_dbl": {
+    "prefix": "ttimes",
+    "body": [
+      "@ tok_times_dbl ${1:TOK} ${2:DOUBLE}"
+    ],
+    "description": "Multiply a token by a double value (19.7.13.7.3)"
+  },
+  "tok_divide_dbl": {
+    "prefix": "tdivide",
+    "body": [
+      "@ tok_divide_dbl ${1:TOK} ${2:DOUBLE}"
+    ],
+    "description": "Divide a token by a double value (19.7.13.7.4)"
+  },
+  "tok_plus_tok": {
+    "prefix": "tplustok",
+    "body": [
+      "@ tok_plus_dbl_tok ${1:TOK1} ${2:TOK2}"
+    ],
+    "description": "Add value of TOK2 to TOK1 (19.7.13.7.5)"
+  },
+  "tok_minus_tok": {
+    "prefix": "tminustok",
+    "body": [
+      "@ tok_minus_dbl_tok ${1:TOK1} ${2:TOK2}"
+    ],
+    "description": "Subtract value of TOK2 from TOK1 (19.7.13.7.6)"
+  },
+  "tok_times_tok": {
+    "prefix": "ttimestok",
+    "body": [
+      "@ tok_times_dbl_tok ${1:TOK1} ${2:TOK2}"
+    ],
+    "description": "Multiply TOK1 by TOK2 (19.7.13.7.7)"
+  },
+  "tok_divide_tok": {
+    "prefix": "tdividetok",
+    "body": [
+      "@ tok_divide_dbl_tok ${1:TOK1} ${2:TOK2}"
+    ],
+    "description": "Divide TOK1 by TOK2 (19.7.13.7.8)"
+  },
+  "tok_eval_as_int": {
+    "prefix": "tevali",
+    "body": [
+      "@ tok_eval_as_int ${1:TOK}"
+    ],
+    "description": "Evaluate token as integer (truncate real value) (19.7.13.7.9)"
+  },
+  "tok_eval_as_dbl": {
+    "prefix": "tevald",
+    "body": [
+      "@ tok_eval_as_dbl ${1:TOK}"
+    ],
+    "description": "Evaluate token as double (real number) (19.7.13.7.10)"
+  },
+  "if_tok_eq_dbl block": {
+    "prefix": "iftokeqdbl",
+    "body": [
+      "@ if_tok_eq_dbl ${1:TOK} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token equals any double (fixed tolerance 1e-6) (19.7.13.9.1)"
+  },
+  "if_tok_eq_dbl_tol block": {
+    "prefix": "iftokeqdbltol",
+    "body": [
+      "@ if_tok_eq_dbl_tol ${1:TOK} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token equals any double within tolerance (19.7.13.9.2)"
+  },
+  "if_tok_neq_dbl block": {
+    "prefix": "iftokneqdbl",
+    "body": [
+      "@ if_tok_neq_dbl ${1:TOK} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token not equal to any double (fixed tolerance 1e-6) (19.7.13.9.3)"
+  },
+  "if_tok_neq_dbl_tol block": {
+    "prefix": "iftokneqdbltol",
+    "body": [
+      "@ if_tok_neq_dbl_tol ${1:TOK} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token not equal to any double within tolerance (19.7.13.9.4)"
+  },
+  "if_tok_lt_dbl block": {
+    "prefix": "iftokltdbl",
+    "body": [
+      "@ if_tok_lt_dbl ${1:TOK} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token less than any double (fixed tolerance 1e-6) (19.7.13.9.5)"
+  },
+  "if_tok_lt_dbl_tol block": {
+    "prefix": "iftokltdbltol",
+    "body": [
+      "@ if_tok_lt_dbl_tol ${1:TOK} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token less than any double within tolerance (19.7.13.9.6)"
+  },
+  "if_tok_le_dbl block": {
+    "prefix": "iftokledbl",
+    "body": [
+      "@ if_tok_le_dbl ${1:TOK} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token less than or equal to any double (fixed tolerance 1e-6) (19.7.13.9.7)"
+  },
+  "if_tok_le_dbl_tol block": {
+    "prefix": "iftokledbltol",
+    "body": [
+      "@ if_tok_le_dbl_tol ${1:TOK} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token less than or equal to any double within tolerance (19.7.13.9.8)"
+  },
+  "if_tok_gt_dbl block": {
+    "prefix": "iftokgtdbl",
+    "body": [
+      "@ if_tok_gt_dbl ${1:TOK} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token greater than any double (fixed tolerance 1e-6) (19.7.13.9.9)"
+  },
+  "if_tok_gt_dbl_tol block": {
+    "prefix": "iftokgtdbltol",
+    "body": [
+      "@ if_tok_gt_dbl_tol ${1:TOK} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token greater than any double within tolerance (19.7.13.9.10)"
+  },
+  "if_tok_ge_dbl block": {
+    "prefix": "iftokgedbl",
+    "body": [
+      "@ if_tok_ge_dbl ${1:TOK} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token greater than or equal to any double (fixed tolerance 1e-6) (19.7.13.9.11)"
+  },
+  "if_tok_ge_dbl_tol block": {
+    "prefix": "iftokgedbltol",
+    "body": [
+      "@ if_tok_ge_dbl_tol ${1:TOK} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token greater than or equal to any double within tolerance (19.7.13.9.12)"
+  },
+  "if_tok_in_range_dbl block": {
+    "prefix": "iftokinrangedbl",
+    "body": [
+      "@ if_tok_in_range_dbl ${1:TOK} ${2:LOWER} ${3:UPPER}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is within double range (fixed tolerance 1e-6) (19.7.13.9.17)"
+  },
+  "if_tok_in_range_dbl_tol block": {
+    "prefix": "iftokinrangedbltol",
+    "body": [
+      "@ if_tok_in_range_dbl_tol ${1:TOK} ${2:LOWER} ${3:UPPER} ${4:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is within double range within tolerance (19.7.13.9.18)"
+  },
+  "if_tok_nin_range_dbl block": {
+    "prefix": "iftokninrangedbl",
+    "body": [
+      "@ if_tok_nin_range_dbl ${1:TOK} ${2:LOWER} ${3:UPPER}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is NOT within double range (fixed tolerance 1e-6) (19.7.13.9.19)"
+  },
+  "if_tok_nin_range_dbl_tol block": {
+    "prefix": "iftokninrangedbltol",
+    "body": [
+      "@ if_tok_nin_range_dbl_tol ${1:TOK} ${2:LOWER} ${3:UPPER} ${4:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is NOT within double range within tolerance (19.7.13.9.20)"
+  },
+  "if_tok_eq_int block": {
+    "prefix": "iftokeqint",
+    "body": [
+      "@ if_tok_eq_int ${1:TOK} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token equals any integer (19.7.13.10.1)"
+  },
+  "if_tok_neq_int block": {
+    "prefix": "iftokneqint",
+    "body": [
+      "@ if_tok_neq_int ${1:TOK} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token does not equal any integer (19.7.13.10.2)"
+  },
+  "if_tok_lt_int block": {
+    "prefix": "iftokltint",
+    "body": [
+      "@ if_tok_lt_int ${1:TOK} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is less than any integer (19.7.13.10.3)"
+  },
+  "if_tok_le_int block": {
+    "prefix": "iftokleint",
+    "body": [
+      "@ if_tok_le_int ${1:TOK} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is less than or equal to any integer (19.7.13.10.4)"
+  },
+  "if_tok_gt_int block": {
+    "prefix": "iftokgtint",
+    "body": [
+      "@ if_tok_gt_int ${1:TOK} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is greater than any integer (19.7.13.10.5)"
+  },
+  "if_tok_ge_int block": {
+    "prefix": "iftokgeint",
+    "body": [
+      "@ if_tok_ge_int ${1:TOK} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is greater than or equal to any integer (19.7.13.10.6)"
+  },
+  "if_tok_in_range_int block": {
+    "prefix": "iftokinrangeint",
+    "body": [
+      "@ if_tok_in_range_int ${1:TOK} ${2:LOWER} ${3:UPPER}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is within integer range (19.7.13.10.7)"
+  },
+  "if_tok_nin_range_int block": {
+    "prefix": "iftokninrangeint",
+    "body": [
+      "@ if_tok_nin_range_int ${1:TOK} ${2:LOWER} ${3:UPPER}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If token is NOT within integer range (19.7.13.10.8)"
+  },
+  "if_val block": {
+    "prefix": "ifval",
+    "body": [
+      "@ if_val ${1:VALUE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if any value is not empty (OR) (19.7.13.11.1)"
+  },
+  "if_nval block": {
+    "prefix": "ifnval",
+    "body": [
+      "@ if_nval ${1:VALUE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if any value is empty (OR) (19.7.13.11.2)"
+  },
+  "if_all_vals block": {
+    "prefix": "ifallvals",
+    "body": [
+      "@ if_all_vals ${1:VALUE1}${2: ${3:VALUE2}}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if all values are not empty (AND) (19.7.13.11.3)"
+  },
+  "if_nall_vals block": {
+    "prefix": "ifnallvals",
+    "body": [
+      "@ if_nall_vals ${1:VALUE1}${2: ${3:VALUE2}}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if all values are empty (AND) (19.7.13.11.4)"
+  },
+  "if_val_eq_str block": {
+    "prefix": "ifvaleqstr",
+    "body": [
+      "@ if_val_eq_str ${1:VALUE} \"${2:STRING}\"",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if value equals any of the given strings (OR) (19.7.13.12.1)"
+  },
+  "if_val_neq_str block": {
+    "prefix": "ifvalneqstr",
+    "body": [
+      "@ if_val_neq_str ${1:VALUE} \"${2:STRING}\"",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if value does not equal any of the given strings (OR) (19.7.13.12.2)"
+  },
+  "if_val_eq_dbl block": {
+    "prefix": "ifvaleqbl",
+    "body": [
+      "@ if_val_eq_dbl ${1:VALUE} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value equals any double (fixed tolerance) (19.7.13.13.1)"
+  },
+  "if_val_eq_dbl_tol block": {
+    "prefix": "ifvaleqbltol",
+    "body": [
+      "@ if_val_eq_dbl_tol ${1:VALUE} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value equals any double within tolerance (19.7.13.13.2)"
+  },
+  "if_val_neq_dbl block": {
+    "prefix": "ifvalneqbl",
+    "body": [
+      "@ if_val_neq_dbl ${1:VALUE} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value does not equal any double (19.7.13.13.3)"
+  },
+  "if_val_neq_dbl_tol block": {
+    "prefix": "ifvalneqbltol",
+    "body": [
+      "@ if_val_neq_dbl_tol ${1:VALUE} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value does not equal any double within tolerance (19.7.13.13.4)"
+  },
+  "if_val_lt_dbl block": {
+    "prefix": "ifvalltdbl",
+    "body": [
+      "@ if_val_lt_dbl ${1:VALUE} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value less than any double (19.7.13.13.5)"
+  },
+  "if_val_lt_dbl_tol block": {
+    "prefix": "ifvalltdbltol",
+    "body": [
+      "@ if_val_lt_dbl_tol ${1:VALUE} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value less than any double within tolerance (19.7.13.13.6)"
+  },
+  "if_val_le_dbl block": {
+    "prefix": "ifvalledbl",
+    "body": [
+      "@ if_val_le_dbl ${1:VALUE} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value less than or equal to any double (19.7.13.13.7)"
+  },
+  "if_val_le_dbl_tol block": {
+    "prefix": "ifvalledbltol",
+    "body": [
+      "@ if_val_le_dbl_tol ${1:VALUE} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value less than or equal to any double within tolerance (19.7.13.13.8)"
+  },
+  "if_val_gt_dbl block": {
+    "prefix": "ifvalgtdbl",
+    "body": [
+      "@ if_val_gt_dbl ${1:VALUE} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value greater than any double (19.7.13.13.9)"
+  },
+  "if_val_gt_dbl_tol block": {
+    "prefix": "ifvalgtdbltol",
+    "body": [
+      "@ if_val_gt_dbl_tol ${1:VALUE} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value greater than any double within tolerance (19.7.13.13.10)"
+  },
+  "if_val_ge_dbl block": {
+    "prefix": "ifvalgedbl",
+    "body": [
+      "@ if_val_ge_dbl ${1:VALUE} ${2:DOUBLE}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value greater than or equal to any double (19.7.13.13.11)"
+  },
+  "if_val_ge_dbl_tol block": {
+    "prefix": "ifvalgedbltol",
+    "body": [
+      "@ if_val_ge_dbl_tol ${1:VALUE} ${2:DOUBLE} ${3:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value greater than or equal to any double within tolerance (19.7.13.13.12)"
+  },
+  "if_val_in_range_dbl block": {
+    "prefix": "ifvalinrangedbl",
+    "body": [
+      "@ if_val_in_range_dbl ${1:VALUE} ${2:LOWER} ${3:UPPER}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value is within double range (19.7.13.13.13)"
+  },
+  "if_val_in_range_dbl_tol block": {
+    "prefix": "ifvalinrangedbltol",
+    "body": [
+      "@ if_val_in_range_dbl_tol ${1:VALUE} ${2:LOWER} ${3:UPPER} ${4:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value is within double range within tolerance (19.7.13.13.14)"
+  },
+  "if_val_nin_range_dbl block": {
+    "prefix": "ifvalninrangedbl",
+    "body": [
+      "@ if_val_nin_range_dbl ${1:VALUE} ${2:LOWER} ${3:UPPER}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value is NOT within double range (19.7.13.13.15)"
+  },
+  "if_val_nin_range_dbl_tol block": {
+    "prefix": "ifvalninrangedbltol",
+    "body": [
+      "@ if_val_nin_range_dbl_tol ${1:VALUE} ${2:LOWER} ${3:UPPER} ${4:TOL}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value is NOT within double range within tolerance (19.7.13.13.16)"
+  },
+  "if_val_eq_int block": {
+    "prefix": "ifvaleqint",
+    "body": [
+      "@ if_val_eq_int ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value equals any integer (19.7.13.14.1)"
+  },
+  "if_val_neq_int block": {
+    "prefix": "ifvalneqint",
+    "body": [
+      "@ if_val_neq_int ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value does not equal any integer (19.7.13.14.2)"
+  },
+  "if_val_lt_int block": {
+    "prefix": "ifvalltint",
+    "body": [
+      "@ if_val_lt_int ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value is less than any integer (19.7.13.14.3)"
+  },
+  "if_val_le_int block": {
+    "prefix": "ifvalleint",
+    "body": [
+      "@ if_val_le_int ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value is less than or equal to any integer (19.7.13.14.4)"
+  },
+  "if_val_gt_int block": {
+    "prefix": "ifvalgtint",
+    "body": [
+      "@ if_val_gt_int ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value is greater than any integer (19.7.13.14.5)"
+  },
+  "if_val_ge_int block": {
+    "prefix": "ifvalgeint",
+    "body": [
+      "@ if_val_ge_int ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "If value is greater than or equal to any integer (19.7.13.14.6)"
+  },
+  "if_val_lt_all_ints block": {
+    "prefix": "ifvalltallints",
+    "body": [
+      "@ if_val_lt_all_ints ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if value is less than all given integers (AND) (19.7.13.14.9)"
+  },
+  "if_val_le_all_ints block": {
+    "prefix": "ifvalleallints",
+    "body": [
+      "@ if_val_le_all_ints ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if value is less than or equal to all given integers (AND) (19.7.13.14.10)"
+  },
+  "if_val_gt_all_ints block": {
+    "prefix": "ifvalgtallints",
+    "body": [
+      "@ if_val_gt_all_ints ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if value is greater than all given integers (AND) (19.7.13.14.11)"
+  },
+  "if_val_ge_all_ints block": {
+    "prefix": "ifvalgeallints",
+    "body": [
+      "@ if_val_ge_all_ints ${1:VALUE} ${2:INT}",
+      "// Commands to be processed if true",
+      "// Commands processed if statement is true",
+      "@ end_if"
+    ],
+    "description": "True if value is greater than or equal to all given integers (AND) (19.7.13.14.12)"
+  },
+  "if_dongle_eq_str block": {
+    "prefix": "ifdongleeqstr",
+    "body": [
+      "@ if_dongle_eq_str \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If dongle number equals any string (19.7.13.15.1)"
+  },
+  "if_dongle_neq_all_str block": {
+    "prefix": "ifdongleneqallstr",
+    "body": [
+      "@ if_dongle_neq_all_str \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If dongle number does not equal all strings (19.7.13.15.2)"
+  },
+  "if_client_eq_str block": {
+    "prefix": "ifclienteqstr",
+    "body": [
+      "@ if_client_eq_str \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If client name equals any string (19.7.13.15.3)"
+  },
+  "if_client_neq_all_str block": {
+    "prefix": "ifclientneqallstr",
+    "body": [
+      "@ if_client_neq_all_str \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If client name does not equal all strings (19.7.13.15.4)"
+  },
+  "if_project_is_synergy block": {
+    "prefix": "ifprojectissynergy",
+    "body": [
+      "@ if_project_is_synergy",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If project is a Synergy project (19.7.13.15.5)"
+  },
+  "if_project_not_synergy block": {
+    "prefix": "ifprojectnotsynergy",
+    "body": [
+      "@ if_project_not_synergy",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If project is not a Synergy project (19.7.13.15.6)"
+  },
+  "if_synergy_guid_has block": {
+    "prefix": "ifsynergyguidhas",
+    "body": [
+      "@ if_synergy_guid_has \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If Synergy GUID contains string (19.7.13.15.7)"
+  },
+  "if_synergy_guid_has_not block": {
+    "prefix": "ifsynergyguidhasnot",
+    "body": [
+      "@ if_synergy_guid_has_not \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If Synergy GUID does not contain string (19.7.13.15.8)"
+  },
+  "if_synergy_path_has block": {
+    "prefix": "ifsynergypathhas",
+    "body": [
+      "@ if_synergy_path_has \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If Synergy path contains string (19.7.13.15.9)"
+  },
+  "if_synergy_path_has_not block": {
+    "prefix": "ifsynergypathhasnot",
+    "body": [
+      "@ if_synergy_path_has_not \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If Synergy path does not contain string (19.7.13.15.10)"
+  },
+  "if_synergy_path_has_all block": {
+    "prefix": "ifsynergypathhasall",
+    "body": [
+      "@ if_synergy_path_has_all \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If Synergy path contains all strings (19.7.13.15.11)"
+  },
+  "if_synergy_project_has_not block": {
+    "prefix": "ifsynergyprojecthasnot",
+    "body": [
+      "@ if_synergy_project_has_not \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If Synergy project name does not contain string (19.7.13.15.13)"
+  },
+  "if_synergy_project_has_all block": {
+    "prefix": "ifsynergyprojecthasall",
+    "body": [
+      "@ if_synergy_project_has_all \"${1:STRING}\"",
+      "// Commands to be processed if true",
+      "  ${0}",
+      "@ end_if"
+    ],
+    "description": "If Synergy project name contains all strings (19.7.13.15.14)"
+  },
+  "clear_output_window": {
+    "prefix": "clearout",
+    "body": [
+      "@ clear_output_window"
+    ],
+    "description": "Clear the 12d output window (19.7.13.16.1)"
+  },
+  "echo": {
+    "prefix": "echo",
+    "body": [
+      "@ echo \"${1:MESSAGE}\""
+    ],
+    "description": "Write a message to the output window (19.7.13.16.2)"
+  },
+  "set_model_attribute": {
+    "prefix": "setmodelattr",
+    "body": [
+      "@ set_model_attribute ${1:MODEL} \"${2:ATTRIBUTE_PATH}\" \"${3:VALUE}\""
+    ],
+    "description": "Set a model attribute value (19.7.13.16.7)"
+  },
+  "remove_model_attribute": {
+    "prefix": "removemodelattr",
+    "body": [
+      "@ remove_model_attribute ${1:MODEL} \"${2:ATTRIBUTE_PATH}\""
+    ],
+    "description": "Remove a model attribute (19.7.13.16.8)"
   }
-
 }
