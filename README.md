@@ -134,6 +134,16 @@ This extension activates on:
 
 ---
 
+## Screenshots
+
+### Syntax highlighting
+![Syntax highlighting](images/syntax-highlighting.png)
+
+### Snippet IntelliSense
+![Snippet IntelliSense](images/snippet-intellisense.png)
+
+---
+
 ## Scope and limitations
 
 This extension does **not** provide:

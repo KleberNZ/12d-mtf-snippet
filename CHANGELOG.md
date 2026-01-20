@@ -2,6 +2,12 @@
 
 All notable changes to the **12d MTF Snippet Support** extension are documented here.
 
+## [0.1.4] - 2026-01-21
+
+### Changed
+- Restored screenshots in README and Marketplace Overview
+
+
 ## [0.1.3] - 2026-01-21
 
 ### Changed
