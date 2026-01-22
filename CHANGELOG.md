@@ -2,6 +2,10 @@
 
 All notable changes to the **12d MTF Snippet Support** extension are documented here.
 
+## [0.1.7] – 2026-01-22
+
+- Fixed syntax highlighting for @ def_tok_no_concat and def_tok_* directives
+
 ## [0.1.6] – 2026-01-22
 
 ### Added
@@ -12,7 +16,6 @@ All notable changes to the **12d MTF Snippet Support** extension are documented 
 
 ### Notes
 - `@ else` is intentionally not a fold boundary due to VS Code language-only limitations.
-
 
 ## [0.1.5] - 2026-01-21
 
