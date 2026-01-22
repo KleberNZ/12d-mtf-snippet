@@ -4,6 +4,9 @@ VS Code language support for **12d Model** `*.mtfsnippet` files, providing synta
 
 This is a **pure language extension** — no runtime code, no execution, no validation.
 
+**Control-flow folding for MTF directives (`@ if*`, `@ repeat`) using VS Code folding markers (no runtime code).**
+![MTF control-flow folding demo](media/mtf-folding-demo.gif)
+
 ---
 
 ## Quick start
