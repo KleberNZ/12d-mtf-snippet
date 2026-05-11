@@ -4,6 +4,9 @@ VS Code language support for **12d Model** `*.mtfsnippet` files, providing synta
 
 This is a **pure language extension** — no runtime code, no execution, no validation.
 
+**Control-flow folding for MTF directives (`@ if*`, `@ repeat`) using VS Code folding markers (no runtime code).**
+![MTF control-flow folding demo](media/mtf-folding-demo.gif)
+
 ---
 
 ## Quick start
@@ -42,25 +45,36 @@ This is a **pure language extension** — no runtime code, no execution, no vali
 
 ### Control flow
 
-| Prefix  | Description                       |
-| ------- | --------------------------------- |
-| `ifb`   | Basic `@ if` / `@ end_if` block   |
-| `ifeqi` | `@ if_val_eq_int` block           |
-| `ifnei` | `@ if_val_ne_int` block           |
-| `elseb` | `@ else` block                    |
-| `rep`   | `@ repeat` / `@ end_repeat` block |
+| Prefix        | Description                               |
+| ------------- | ----------------------------------------- |
+| `ifb`         | Basic `@ if` / `@ end_if` block           |
+| `ifelse`      | Full `@ if` / `@ else` / `@ end_if` block |
+| `ifvaleqint`  | `@ if_val_eq_int` / `@ end_if` block      |
+| `ifvalneqint` | `@ if_val_neq_int` / `@ end_if` block     |
+| `elseb`       | `@ else` block                            |
+| `rep`         | `@ repeat` / `@ end_repeat` block         |
 
 ---
 
-### `@ def_tok`
+### Common structural / helper blocks
 
-| Prefix  | Description           |
-| ------- | --------------------- |
-| `dt`    | Numeric token         |
-| `dtexp` | Expression token      |
-| `dtstr` | String token          |
-| `dtc`   | Concatenation token   |
-| `dtnc`  | `@ def_tok_no_concat` |
+| Prefix   | Description                                  |
+| -------- | -------------------------------------------- |
+| `hdr`    | Standard snippet header block                |
+| `abb`    | Abbreviation block                           |
+| `alr`    | Automatic left/right handling block          |
+| `stdchs` | `$(_STD_CHS)` standard chainage macro block  |
+| `absee`  | Absolute extra start / extra end macro block |
+
+---
+
+### @ def_tok
+
+| Prefix  | Description                                                  |
+| ------- | ------------------------------------------------------------ |
+| `dt`    | Define numeric token (`@ def_tok`)                           |
+| `dtval` | Define value-based token (`@ def_tok` with value expression) |
+| `dtc`   | Define concatenated token                                    |
 
 ---
 

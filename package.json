@@ -2,7 +2,7 @@
   "name": "12d-mtf-snippet",
   "displayName": "12d MTF Snippet Support",
   "description": "Language support for 12d Model MTF snippet files (.mtfsnippet)",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "publisher": "kleberNZ",
   "license": "MIT",
   "icon": "images/icon.png",

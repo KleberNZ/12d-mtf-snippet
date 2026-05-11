@@ -7,6 +7,9 @@
       "include": "#directiveInfoSizingLine"
     },
     {
+      "include": "#parameterBlock"
+    },
+    {
       "include": "#directiveLine"
     },
     {
@@ -64,7 +67,7 @@
   "repository": {
     "nonDirectiveLineComment": {
       "name": "comment.line.double-slash.12dmtf",
-      "match": "//(?!\\s*(PARAMETER|DISPLAY)\\b).*$"
+      "match": "//(?![ \\t]+(PARAMETER|DISPLAY|START_PARAMETER_REGION|END_PARAMETER_REGION|START_PARAMETER|END_PARAMETER)\\b).*$"
     },
     "blockComment": {
       "name": "comment.block.12dmtf",
@@ -75,7 +78,7 @@
       "patterns": [
         {
           "name": "meta.directive.12dmtf",
-          "begin": "^(\\s*)(//)(?=\\s*(PARAMETER|DISPLAY)\\b)",
+          "begin": "^(\\s*)(//)(?=[ \\t]+(PARAMETER|DISPLAY|START_PARAMETER_REGION|END_PARAMETER_REGION|START_PARAMETER|END_PARAMETER)\\b)",
           "beginCaptures": {
             "2": {
               "name": "punctuation.definition.directive.12dmtf"
@@ -84,8 +87,12 @@
           "end": "$",
           "patterns": [
             {
-              "match": "\\b(PARAMETER|DISPLAY)\\b",
+              "match": "\\b(PARAMETER|DISPLAY|START_PARAMETER_REGION|END_PARAMETER_REGION|START_PARAMETER|END_PARAMETER)\\b",
               "name": "keyword.other.directive.12dmtf"
+            },
+            {
+              "match": "\\b(OPEN|CLOSED)\\b",
+              "name": "constant.language.parameter-region-state.12dmtf"
             },
             {
               "match": "\\b(CHOICE2?|REAL|INTEGER|TEXT|NAME|COLOUR|TICK|NAMED_GRADE|LAYER|SELECT|OPTIONAL|INCREMENT|MODEL_CREATE|MODEL_MUST_EXIST|MODEL_MUST_NOT_EXIST|TIN_CREATE|TIN_MUST_EXIST|TIN_MUST_NOT_EXIST|OUTPUT_PARSING_STAGES)\\b",
@@ -107,20 +114,62 @@
         }
       ]
     },
-    "defTokExpressionString": {
-      "name": "meta.expression.def_tok.12dmtf",
-      "begin": "@\\s+def_tok\\s+\\w+\\s+\"",
-      "end": "\"",
+    "parameterBlock": {
+      "name": "meta.directive.parameter-block.12dmtf",
+      "begin": "^(\\s*)(//)(?=[ \\t]+START_PARAMETER\\b)",
+      "beginCaptures": {
+        "2": {
+          "name": "punctuation.definition.directive.12dmtf"
+        }
+      },
+      "end": "^(\\s*)(//)([ \\t]+)(END_PARAMETER)\\b.*$",
+      "endCaptures": {
+        "2": {
+          "name": "punctuation.definition.directive.12dmtf"
+        },
+        "4": {
+          "name": "keyword.other.directive.12dmtf"
+        }
+      },
       "patterns": [
         {
-          "include": "#stringToken"
+          "match": "^(\\s*)(//)",
+          "captures": {
+            "2": {
+              "name": "punctuation.definition.directive.12dmtf"
+            }
+          }
+        },
+        {
+          "match": "\\b(START_PARAMETER|END_PARAMETER)\\b",
+          "name": "keyword.other.directive.12dmtf"
+        },
+        {
+          "match": "\\b(CHOICE2?|REAL|INTEGER|TEXT|NAME|COLOUR|TICK|NAMED_GRADE|LAYER|SELECT|OPTIONAL|INCREMENT|MODEL_CREATE|MODEL_MUST_EXIST|MODEL_MUST_NOT_EXIST|TIN_CREATE|TIN_MUST_EXIST|TIN_MUST_NOT_EXIST|OUTPUT_PARSING_STAGES)\\b",
+          "name": "storage.type.12dmtf"
+        },
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#macroAlias"
+        },
+        {
+          "include": "#variable"
         },
         {
           "include": "#numbers"
-        },
-        {
-          "include": "#arithmeticOperatorsSpaced"
         }
+      ]
+    },
+    "defTokExpressionString": {
+      "name": "meta.expression.def_tok.12dmtf",
+      "begin": "@\\s+def_tok(_[a-z0-9_]+)?\\s+\\w+\\s+\"",
+      "end": "\"",
+      "patterns": [
+        { "include": "#stringToken" },
+        { "include": "#numbers" },
+        { "include": "#arithmeticOperatorsSpaced" }
       ]
     },
     "stringToken": {
@@ -145,9 +194,9 @@
       "name": "variable.other.12dmtf",
       "match": "\\$\\((?!_)[A-Za-z0-9_]+\\)"
     },
-    "atDirectives": {
-      "name": "keyword.control.directive.12dmtf",
-      "match": "\\B@\\s+(if(_[a-z0-9_]+)?|else|end_if|def|def_tok|repeat|end_repeat|label|goto)\\b"
+"atDirectives": {
+  "name": "keyword.control.directive.12dmtf",
+  "match": "\\B@\\s+(if(_[a-z0-9_]+)?|else|end_if|def|def_tok(_[a-z0-9_]+)?|repeat|end_repeat|label|goto)\\b"
     },
     "numbers": {
       "patterns": [
