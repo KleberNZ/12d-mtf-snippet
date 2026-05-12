@@ -2,6 +2,14 @@
 
 All notable changes to the **12d MTF Snippet Support** extension are documented here.
 
+## [0.1.8] - 2026-05-12
+
+### Added
+- Added highlighting for snippet parameter regions.
+- Added highlighting for multiline snippet parameter blocks.
+- Added highlighting for `OPEN` / `CLOSED` region states.
+- Preserved normal `//` comments.
+
 ## [0.1.7] – 2026-01-22
 
 - Fixed syntax highlighting for @ def_tok_no_concat and def_tok_* directives
