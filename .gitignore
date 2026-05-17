@@ -12,6 +12,9 @@ dist/
 # Packaged extension artifacts
 *.vsix
 
+# Local packaged extension builds
+releases/
+
 # OS noise
 .DS_Store
 Thumbs.db
