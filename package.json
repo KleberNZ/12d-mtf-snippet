@@ -10,6 +10,14 @@
     "type": "git",
     "url": "https://github.com/kleberNZ/12d-mtf-snippet"
   },
+  "scripts": {
+    "package": "vsce package",
+    "package:clean": "vsce package --no-dependencies",
+    "list": "npm list --depth=0",
+    "check": "npm run package",
+    "show:files": "vsce ls",
+    "show:manifest": "node -e \"console.log(require('./package.json'))\""
+  },
   "engines": {
     "vscode": "^1.103.0"
   },
