@@ -1,10 +1,13 @@
 # VS Code / local settings
 .vscode/
+.vscode-test/
 
 # Node / npm
 node_modules/
 npm-debug.log*
 yarn-error.log*
+out/
+dist/
 
 # Packaged extension artifacts
 *.vsix
