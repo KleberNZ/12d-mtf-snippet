@@ -70,7 +70,7 @@ The current language id is:
 
 ```text
 12dmtfsnippet
-```
+````
 
 Do not rename or replace this language id unless explicitly requested.
 
@@ -111,6 +111,72 @@ If packaging creates files such as:
 ```
 
 they should remain uncommitted unless explicitly requested.
+
+Local `.vsix` files may be stored in:
+
+```text
+releases/
+```
+
+The `releases/` folder is local build/output storage and should remain ignored by Git.
+
+## Publishing / Marketplace Update Workflow
+
+This extension is published manually through the Visual Studio Marketplace publisher portal.
+
+Publisher portal:
+
+```text
+https://marketplace.visualstudio.com/manage/publishers/kleberNZ
+```
+
+Current manual update process:
+
+1. Package the extension locally:
+
+   ```powershell
+   npm run package
+   ```
+
+2. Confirm the generated VSIX file exists, for example:
+
+   ```text
+   12d-mtf-snippet-0.1.8.vsix
+   ```
+
+3. Go to the Visual Studio Marketplace publisher management page:
+
+   ```text
+   https://marketplace.visualstudio.com/manage/publishers/kleberNZ
+   ```
+
+4. Find the extension:
+
+   ```text
+   12d MTF Snippet Support
+   ```
+
+5. Click the three-dot menu next to the extension name.
+
+6. Select:
+
+   ```text
+   Update
+   ```
+
+7. In the upload popup, drop/select the newly generated `.vsix` file.
+
+8. Complete the Marketplace update process in the browser.
+
+Important notes for agents:
+
+* Do not assume Azure DevOps publishing is currently configured.
+* Do not introduce an Azure DevOps publishing workflow unless explicitly requested.
+* Do not add automated Marketplace publishing unless explicitly requested.
+* Treat the current publishing process as manual VSIX upload through the Marketplace publisher portal.
+* Generated `.vsix` files must not be committed to Git.
+* Local `.vsix` files should be stored in `releases/`, which is ignored by Git.
+* Use `npm run package` when preparing a VSIX for Marketplace upload.
 
 ## Validation Commands
 
@@ -154,13 +220,13 @@ When editing `syntaxes/12dmtfsnippet.tmLanguage.json`:
 
 When editing `snippets/mtf.code-snippets`:
 
-- Use clear and predictable snippet prefixes.
-- Keep descriptions short and useful.
-- Use valid VS Code snippet syntax.
-- Keep snippets aligned with documented 12d Model MTF syntax, especially 12d Model Manual Section 19.7.
-- Treat snippets as authoring assistance, not abstraction or simplification.
-- Avoid adding speculative snippets that are not based on documented syntax or real `.mtfsnippet` workflows.
-- Keep placeholder names meaningful.
+* Use clear and predictable snippet prefixes.
+* Keep descriptions short and useful.
+* Use valid VS Code snippet syntax.
+* Keep snippets aligned with documented 12d Model MTF syntax, especially 12d Model Manual Section 19.7.
+* Treat snippets as authoring assistance, not abstraction or simplification.
+* Avoid adding speculative snippets that are not based on documented syntax or real `.mtfsnippet` workflows.
+* Keep placeholder names meaningful.
 
 ## README Guidance
 
