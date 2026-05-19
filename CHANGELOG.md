@@ -2,6 +2,12 @@
 
 All notable changes to the **12d MTF Snippet Support** extension are documented here.
 
+## [0.1.9] - 2026-05-19
+
+### Changed
+- Added additional snippet trigger aliases to improve snippet discoverability.
+- Preserved existing short snippet prefixes while adding natural keyword triggers such as `param`, `parameter`, `display`, `insert`, `repeat`, and `def_tok`.
+
 ## [0.1.8] - 2026-05-12
 
 ### Added

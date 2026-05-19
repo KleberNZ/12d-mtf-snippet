@@ -1,6 +1,11 @@
 {
   "12d HEADER block": {
-    "prefix": "hdr",
+    "prefix": [
+      "hdr",
+      "header",
+      "heading",
+      "infoheader"
+    ],
     "body": [
       "// ================================================================",
       "// ${1:Library / Company Name} Snippet",
@@ -25,7 +30,11 @@
     "description": "12d library-style heading and INFO block"
   },
   "if block": {
-    "prefix": "ifb",
+    "prefix": [
+      "ifb",
+      "if",
+      "ifblock"
+    ],
     "body": [
       "@ if ${1:condition}",
       "// Commands processed if statement is true",
@@ -34,7 +43,11 @@
     "description": "Basic if block"
   },
   "if / else block": {
-    "prefix": "ifelse",
+    "prefix": [
+      "ifelse",
+      "ife",
+      "ifelseblock"
+    ],
     "body": [
       "@ if ${1:condition}",
       "  ${2}",
@@ -72,7 +85,11 @@
     "description": "Reference: directive abbreviations used in 12d snippets"
   },
   "else block": {
-    "prefix": "elseb",
+    "prefix": [
+      "elseb",
+      "else",
+      "elseblock"
+    ],
     "body": [
       "@ else",
       "// Commands processed if statement is true"
@@ -80,7 +97,11 @@
     "description": "Else block"
   },
   "repeat block": {
-    "prefix": "rep",
+    "prefix": [
+      "rep",
+      "repeat",
+      "repeatblock"
+    ],
     "body": [
       "@ repeat ${1:COUNT}",
       "// modifier to copy",
@@ -89,42 +110,68 @@
     "description": "Repeat block"
   },
   "Insert basic (generic)": {
-    "prefix": "ins",
+    "prefix": [
+      "ins",
+      "insert",
+      "insertbasic"
+    ],
     "body": [
       "insert \"${1:link_name}$(_AUTO_LR)\" \"${2:link_colour}\" ${3|unknown,0.0|} ${4|unknown,0.0|} ${5|unknown,0.0|} $(_STD_CHS) ${6|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${7:comment}"
     ],
     "description": "Generic insert; appended after last link"
   },
   "Insert before link": {
-    "prefix": "insb",
+    "prefix": [
+      "insb",
+      "insertbefore",
+      "beforelink"
+    ],
     "body": [
       "insert \"${1:link_name}$(_AUTO_LR)\" \"${2:link_colour}\" ${3|unknown,0.0|} ${4|unknown,0.0|} ${5|unknown,0.0|} $(_STD_CHS) \"${6:before_link}$(_AUTO_LR)\" ${7|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${8:comment}"
     ],
     "description": "Insert before specified link"
   },
   "Insert after link": {
-    "prefix": "insa",
+    "prefix": [
+      "insa",
+      "insertafter",
+      "afterlink"
+    ],
     "body": [
       "insert \"${1:link_name}$(_AUTO_LR)\" \"${2:link_colour}\" ${3|unknown,0.0|} ${4|unknown,0.0|} ${5|unknown,0.0|} $(_STD_CHS) \"\" \"${6:after_link}$(_AUTO_LR)\" ${7|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${8:comment}"
     ],
     "description": "Insert after specified link (explicit empty BEFORE)"
   },
   "Insert with interval": {
-    "prefix": "insi",
+    "prefix": [
+      "insi",
+      "insertinterval",
+      "interval"
+    ],
     "body": [
       "insert \"${1:link_name}$(_AUTO_LR)\" \"${2:link_colour}\" ${3|unknown,0.0|} ${4|unknown,0.0|} ${5|unknown,0.0|} $(_STD_CHS) interval ${6:1} ${7|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${8:comment}"
     ],
     "description": "Insert with explicit interval override"
   },
   "Link fixed – modify one dimension": {
-    "prefix": "lfx",
+    "prefix": [
+      "lfx",
+      "linkfix",
+      "linkfixed",
+      "modfix"
+    ],
     "body": [
       "link_fixed \"${1:link_name}\" $(_SCH) 0 $(_ECH) 0 \"${2|mod_wdt_xfl_fix,mod_wdt_hgt_fix,mod_hgt_wdt_fix,mod_hgt_xfl_fix,mod_xfl_wdt_fix,mod_xfl_hgt_fix,mod_slp_wdt_fix,mod_slp_hgt_fix|}\" \"val_constant\" ${3:0.0} \\$null \"\" ${4|1,0|} ${5|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${6:comment}"
     ],
     "description": "Modify one dimension of a link using mod_*_fix"
   },
   "Link fixed – modify all": {
-    "prefix": "lfxall",
+    "prefix": [
+      "lfxall",
+      "linkfixall",
+      "linkfixedall",
+      "modall"
+    ],
     "body": [
       "link_fixed \"${1:link_name}\" $(_SCH) 0 $(_ECH) 0 \"mod_all\" \"pos_pos_lineal\" \\$null \\$null \"\" ${2|1,0|} ${3|$(_ASE),$(_ABS_ES),$(_ABS_EE),$(_ES),$(_ES_EE),$(_EE)|} // ${4:comment}"
     ],
@@ -168,7 +215,12 @@
     "description": "decision_label with chainage range and optional modifier extras"
   },
   "12d START PARAMETER REGION": {
-    "prefix": "preg",
+    "prefix": [
+      "preg",
+      "paramregion",
+      "parameterregion",
+      "region"
+    ],
     "body": [
       "// START_PARAMETER_REGION \"${1:Region Name}\" ${2|OPEN,CLOSED|}",
       "${0}",
@@ -177,49 +229,77 @@
     "description": "12d Snippet Parameter Region (collapsible group)"
   },
   "12d PARAMETER (generic)": {
-    "prefix": "pp",
+    "prefix": [
+      "pp",
+      "param",
+      "parameter"
+    ],
     "body": [
       "// PARAMETER ${1:param_name} ${2|REAL,ANGLE,BEARING,INTEGER,TEXT,SELECT,TICK,COLOUR,NAME,NAME_WC,LAYER,NAMED_GRADE|} \"${3:description}\" ${4:default_value}"
     ],
     "description": "12d PARAMETER definition (most types)"
   },
   "12d PARAMETER CHOICE": {
-    "prefix": "pchoice",
+    "prefix": [
+      "pchoice",
+      "paramchoice",
+      "parameterchoice",
+      "choice"
+    ],
     "body": [
       "// PARAMETER ${1:param_name} CHOICE ${2:description} \"${3:Choice1}\" \"${4:Choice2}\" \"${5:Choice3}\" \"${6:Choice4}\""
     ],
     "description": "12d PARAMETER of type CHOICE (single selection)"
   },
   "12d PARAMETER CHOICE2": {
-    "prefix": "pchoice2",
+    "prefix": [
+      "pchoice2",
+      "paramchoice2",
+      "parameterchoice2",
+      "choice2"
+    ],
     "body": [
       "// PARAMETER ${1:param_name} CHOICE2 ${2:description} ${3:default} \"${4:opt1}\" \"${5:descr1}\" \"${6:opt2}\" \"${7:descr2}\" \"${8:USER}\" \"${9:User defined}\""
     ],
     "description": "12d PARAMETER of type CHOICE2 (extended / multi-choice)"
   },
   "12d INFO command": {
-    "prefix": "info",
+    "prefix": [
+      "info",
+      "infocommand"
+    ],
     "body": [
       "// INFO ${1:information text}"
     ],
     "description": "12d INFO command"
   },
   "12d INFO_SIZING command": {
-    "prefix": "infosz",
+    "prefix": [
+      "infosz",
+      "infosizing",
+      "info_sizing"
+    ],
     "body": [
       "// INFO_SIZING ${1:width_chars} ${2:depth_chars}"
     ],
     "description": "12d INFO_SIZING command"
   },
   "12d DISPLAY": {
-    "prefix": "disp",
+    "prefix": [
+      "disp",
+      "display"
+    ],
     "body": [
       "// DISPLAY ${1:param_name}"
     ],
     "description": "12d DISPLAY command"
   },
   "12d DISPLAY + DISPLAY_TYPE": {
-    "prefix": "dispt",
+    "prefix": [
+      "dispt",
+      "displaytype",
+      "display_type"
+    ],
     "body": [
       "// DISPLAY ${1:param_name}",
       "// DISPLAY_TYPE ${1:param_name}"
@@ -227,49 +307,78 @@
     "description": "12d DISPLAY with DISPLAY_TYPE (show current value in Type column)"
   },
   "12d INCREMENT command": {
-    "prefix": "inc",
+    "prefix": [
+      "inc",
+      "increment"
+    ],
     "body": [
       "// INCREMENT ${1:param_name} ${2:step}"
     ],
     "description": "12d INCREMENT parameter command"
   },
   "12d END_DATE command": {
-    "prefix": "enddate",
+    "prefix": [
+      "enddate",
+      "end_date"
+    ],
     "body": [
       "// END_DATE \"${1:YYYY/MM/DD HH:MM}\" \"${2:User message}\""
     ],
     "description": "12d END_DATE command"
   },
   "12d OUTPUT_PARSING_STAGES": {
-    "prefix": "ops",
+    "prefix": [
+      "ops",
+      "outputparsing",
+      "output_parsing_stages"
+    ],
     "body": [
       "// OUTPUT_PARSING_STAGES \"${1:filename}\""
     ],
     "description": "12d OUTPUT_PARSING_STAGES command (write intermediate parsing results to file)"
   },
   "12d NO_REPEAT_DIRECTIVES command": {
-    "prefix": "nrd",
+    "prefix": [
+      "nrd",
+      "norepeat",
+      "no_repeat_directives"
+    ],
     "body": [
       "// NO_REPEAT_DIRECTIVES"
     ],
     "description": "12d NO_REPEAT_DIRECTIVES command"
   },
   "12d PARAMETER OPTIONAL": {
-    "prefix": "opt",
+    "prefix": [
+      "opt",
+      "optional",
+      "paramoptional",
+      "parameteroptional"
+    ],
     "body": [
       "OPTIONAL"
     ],
     "description": "12d PARAMETER definition (most types) with OPTIONAL flag"
   },
   "12d PARAMETER MODEL (CREATE / MUST_EXIST / MUST_NOT_EXIST)": {
-    "prefix": "pmodel",
+    "prefix": [
+      "pmodel",
+      "parammodel",
+      "parametermodel",
+      "model"
+    ],
     "body": [
       "// PARAMETER ${1:param_name} ${2|MODEL_CREATE,MODEL_MUST_EXIST,MODEL_MUST_NOT_EXIST|} \"${3:description}\" ${4:default_model_name}"
     ],
     "description": "12d PARAMETER for model handling (create or existence constraints)"
   },
   "12d PARAMETER TIN (CREATE / MUST_EXIST / MUST_NOT_EXIST)": {
-    "prefix": "ptin",
+    "prefix": [
+      "ptin",
+      "paramtin",
+      "parametertin",
+      "tin"
+    ],
     "body": [
       "// PARAMETER ${1:param_name} ${2|TIN_CREATE,TIN_MUST_EXIST,TIN_MUST_NOT_EXIST|} \"${3:description}\" ${4:default_tin_name}"
     ],
@@ -689,35 +798,55 @@
     "description": "Automatic parameter: model attribute using parameters/tokens. Ensure params are defined as tokens first (manual 19.7.10.50)."
   },
   "def_tok (no value)": {
-    "prefix": "dt",
+    "prefix": [
+      "dt",
+      "deftok",
+      "def_tok"
+    ],
     "body": [
       "@ def_tok ${1:TOK}"
     ],
     "description": "Define token with no value (19.7.13.6.1)"
   },
   "def_tok (value)": {
-    "prefix": "dtv",
+    "prefix": [
+      "dtv",
+      "deftokvalue",
+      "def_tok_value"
+    ],
     "body": [
       "@ def_tok ${1:TOK} ${2:value}"
     ],
     "description": "Define token with a value (unquoted if no spaces) (19.7.13.6.1)"
   },
   "def_tok (quoted string)": {
-    "prefix": "dtq",
+    "prefix": [
+      "dtq",
+      "deftokquoted",
+      "def_tok_quoted"
+    ],
     "body": [
       "@ def_tok ${1:TOK} \"${2:text}\""
     ],
     "description": "Define token with a quoted string value (19.7.13.6.1)"
   },
   "def_tok (concat parts)": {
-    "prefix": "dtc",
+    "prefix": [
+      "dtc",
+      "deftokconcat",
+      "def_tok_concat"
+    ],
     "body": [
       "@ def_tok ${1:TOK} ${2:PART1} ${3:PART2}"
     ],
     "description": "Define token by concatenating multiple parts (result has no whitespace) (19.7.13.6.1)"
   },
   "def_tok (concat with token reference)": {
-    "prefix": "dtct",
+    "prefix": [
+      "dtct",
+      "deftokconcattoken",
+      "def_tok_concat_token"
+    ],
     "body": [
       "@ def_tok ${1:TOK} ${2:PART1} $(${3:OTHER_TOK})"
     ],
