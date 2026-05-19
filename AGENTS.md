@@ -58,7 +58,7 @@ Records user-visible changes.
 
 Update this when making meaningful feature, grammar, snippet, documentation, or packaging changes.
 
-### `test-parameter-regions.mtfsnippet`
+### `test.mtfsnippet`
 
 Test/sample `.mtfsnippet` file used to check highlighting behaviour.
 

@@ -1,0 +1,9 @@
+
+@ if_val_eq_dbl VALUE DOUBLE
+// Commands to be processed if true
+// Commands processed if statement is true
+@ end_if
+
+@ repeat COUNT
+// modifier to copy
+@ end_repeat
